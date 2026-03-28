@@ -346,6 +346,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    width: 100%;
   }
 
   .quarter {
@@ -785,6 +786,7 @@
   @media (max-width: 1024px) {
     .blueprint { padding: 32px 20px 48px; }
     .modules-grid { grid-template-columns: repeat(2, 1fr); }
+    .quarters-grid { grid-template-columns: 1fr !important; gap: 16px; }
     .tools-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
@@ -796,7 +798,7 @@
     .north-star-value { font-size: 18px; }
     .legend { gap: 12px; }
     .modules-grid { grid-template-columns: 1fr; gap: 12px; }
-    .quarters-grid { grid-template-columns: 1fr; gap: 16px; }
+    .quarters-grid { grid-template-columns: 1fr !important; gap: 16px; }
     .quarter-header { flex-wrap: wrap; gap: 6px; padding: 14px 16px 12px; }
     .quarter-name { font-size: 18px; }
     .quarter-theme { margin-left: 0; }
