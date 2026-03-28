@@ -519,6 +519,33 @@
     color: #333;
     letter-spacing: 2px;
   }
+
+  /* ── MOBILE RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav { display: none; }
+    .main { margin-left: 0; }
+    .cover { padding: 40px 24px; height: auto; min-height: 80vh; }
+    .cover h1 { font-size: 32px; }
+    .cover .cover-sub { font-size: 14px; }
+    .section { padding: 40px 24px; }
+    .section h2 { font-size: 24px; }
+    .section .lead { font-size: 14px; }
+    .color-grid { grid-template-columns: repeat(3, 1fr); }
+    .dos-donts-grid { grid-template-columns: 1fr; }
+    .tone-grid { grid-template-columns: 1fr; }
+    .touch-grid { grid-template-columns: 1fr; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .footer-inner { padding: 40px 24px; }
+  }
+
+  @media (max-width: 480px) {
+    .cover { padding: 32px 16px; min-height: 60vh; }
+    .cover h1 { font-size: 26px; }
+    .section { padding: 32px 16px; }
+    .section h2 { font-size: 20px; }
+    .color-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>

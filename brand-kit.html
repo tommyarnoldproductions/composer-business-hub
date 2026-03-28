@@ -549,6 +549,33 @@
   .ref-item:last-child { border-bottom: none; }
   .ref-item .key { color: #666; }
   .ref-item .val { color: #aaa; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+
+  /* ── MOBILE RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .topnav { padding: 0 16px; }
+    .topnav-links { gap: 12px; }
+    .topnav-links a { font-size: 11px; letter-spacing: 1px; }
+    .cover { padding: 40px 24px; }
+    .cover h1 { font-size: 28px; }
+    .cover .sub { font-size: 13px; }
+    .section { padding: 40px 24px; }
+    .section h2 { font-size: 24px; }
+    .section .lead { font-size: 14px; }
+    .colors-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+    .dos-donts-grid { grid-template-columns: 1fr; }
+    .voice-grid { grid-template-columns: 1fr; }
+    .sections-grid { grid-template-columns: 1fr; }
+    .cta-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .topnav-links a { font-size: 10px; letter-spacing: 0.5px; }
+    .cover { padding: 32px 16px; }
+    .cover h1 { font-size: 24px; }
+    .section { padding: 32px 16px; }
+    .section h2 { font-size: 20px; }
+    .colors-grid { grid-template-columns: repeat(2, 1fr); }
+  }
 </style>
 </head>
 <body>
