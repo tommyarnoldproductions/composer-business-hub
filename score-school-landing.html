@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score School | Learn to Score Film & Games</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy-deep: #0D1B2A;
+            --navy: #1B2D45;
+            --navy-storm: #2C3E50;
+            --gold: #D4A843;
+            --gold-soft: #E8D5A3;
+            --cream: #F5F0E8;
+            --text: #C8C0B4;
+            --text-dim: #8A8279;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--navy-deep);
+            color: var(--cream);
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Subtle warm glow */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(212, 168, 67, 0.04) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(212, 168, 67, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* NAV */
+        nav {
+            padding: 28px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .logo .score { color: var(--cream); }
+        .logo .school { color: var(--gold); }
+
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--gold); }
+
+        /* HERO */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 22px;
+            border: 1px solid rgba(212, 168, 67, 0.3);
+            border-radius: 100px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 36px;
+            background: rgba(212, 168, 67, 0.06);
+        }
+
+        h1 {
+            font-family: 'Raleway', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.2rem);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            line-height: 1.15;
+            margin-bottom: 28px;
+            color: var(--cream);
+        }
+
+        h1 .accent {
+            color: var(--gold);
+            display: block;
+        }
+
+        .hero-sub {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text);
+            max-width: 620px;
+            margin: 0 auto 48px;
+            font-weight: 400;
+            line-height: 1.75;
+        }
+
+        .hero-sub strong { color: var(--gold-soft); }
+
+        /* CTA BUTTON */
+        .cta-btn {
+            display: inline-block;
+            padding: 16px 44px;
+            background: var(--gold);
+            color: var(--navy-deep);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 24px rgba(212, 168, 67, 0.2);
+        }
+
+        .cta-btn:hover {
+            background: var(--gold-soft);
+            box-shadow: 0 6px 36px rgba(212, 168, 67, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .cta-note {
+            margin-top: 16px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+
+        /* SOCIAL PROOF */
+        .proof {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            padding: 60px 0;
+            border-top: 1px solid rgba(212, 168, 67, 0.1);
+            border-bottom: 1px solid rgba(212, 168, 67, 0.1);
+            flex-wrap: wrap;
+        }
+
+        .proof-item { text-align: center; }
+
+        .proof-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--gold);
+        }
+
+        .proof-label {
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-top: 4px;
+        }
+
+        /* SECTIONS */
+        .section { padding: 80px 0; }
+
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-family: 'Raleway', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
+            color: var(--cream);
+        }
+
+        .section-text {
+            color: var(--text);
+            font-size: 1.05rem;
+            max-width: 700px;
+            line-height: 1.8;
+        }
+
+        /* PAIN POINTS */
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .pain-card {
+            background: rgba(27, 45, 69, 0.4);
+            border: 1px solid rgba(212, 168, 67, 0.08);
+            border-radius: 12px;
+            padding: 32px;
+            transition: border-color 0.3s;
+        }
+
+        .pain-card:hover {
+            border-color: rgba(212, 168, 67, 0.25);
+        }
+
+        .pain-icon {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+
+        .pain-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--cream);
+        }
+
+        .pain-card p {
+            color: var(--text);
+            font-size: 0.9rem;
+            line-height: 1.65;
+        }
+
+        /* MODULES */
+        .modules { margin-top: 48px; }
+
+        .module {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            padding: 28px 0;
+            border-bottom: 1px solid rgba(212, 168, 67, 0.08);
+        }
+
+        .module-num {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: rgba(212, 168, 67, 0.2);
+            min-width: 60px;
+        }
+
+        .module h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--cream);
+        }
+
+        .module p {
+            color: var(--text);
+            font-size: 0.9rem;
+            line-height: 1.65;
+        }
+
+        /* ABOUT */
+        .about-flex {
+            display: flex;
+            gap: 48px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .about-img {
+            width: 280px;
+            height: 340px;
+            background: linear-gradient(135deg, var(--navy), var(--navy-deep));
+            border: 1px solid rgba(212, 168, 67, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .about-img-placeholder {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .about-text { flex: 1; min-width: 300px; }
+
+        .about-text p {
+            color: var(--text);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .about-text p strong { color: var(--cream); }
+
+        .credential-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .credential-tag {
+            padding: 6px 14px;
+            background: rgba(212, 168, 67, 0.08);
+            border: 1px solid rgba(212, 168, 67, 0.2);
+            border-radius: 100px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 0.05em;
+        }
+
+        /* FAQ */
+        .faq-item {
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(212, 168, 67, 0.08);
+        }
+
+        .faq-q {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.02rem;
+            margin-bottom: 8px;
+            color: var(--cream);
+        }
+
+        .faq-a {
+            color: var(--text);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* FINAL CTA */
+        .final-cta {
+            text-align: center;
+            padding: 100px 0;
+            background: radial-gradient(ellipse at center, rgba(212, 168, 67, 0.05) 0%, transparent 60%);
+        }
+
+        .final-cta h2 { margin-bottom: 16px; }
+
+        .final-cta p {
+            color: var(--text);
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+
+        /* SIGNUP FORM */
+        .signup-form {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            max-width: 520px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .signup-form input[type="email"] {
+            flex: 1;
+            min-width: 250px;
+            padding: 16px 20px;
+            background: rgba(27, 45, 69, 0.5);
+            border: 1px solid rgba(212, 168, 67, 0.15);
+            border-radius: 6px;
+            color: var(--cream);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .signup-form input[type="email"]:focus {
+            border-color: var(--gold);
+        }
+
+        .signup-form input[type="email"]::placeholder {
+            color: var(--text-dim);
+        }
+
+        .signup-form .cta-btn {
+            padding: 16px 32px;
+            font-size: 0.82rem;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(212, 168, 67, 0.08);
+        }
+
+        footer p {
+            color: var(--text-dim);
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        footer .tagline {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+            font-style: italic;
+            letter-spacing: 0.15em;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-top: 8px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero { padding: 60px 0 40px; }
+            .proof { gap: 32px; }
+            .about-img { width: 100%; height: 240px; }
+            .module { flex-direction: column; gap: 8px; }
+            .module-num { min-width: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- NAV -->
+    <nav>
+        <div class="logo"><span class="score">Score</span><span class="school">School</span></div>
+        <a href="#signup">Join the Waitlist</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="badge">Applications Opening Soon</div>
+        <h1>
+            You Already Make Great Music.
+            <span class="accent">Now Learn to Score to Picture.</span>
+        </h1>
+        <p class="hero-sub">
+            You're a producer, beatmaker, or self-taught musician who knows how to write —
+            but <strong>scoring for film and games feels like a different world.</strong>
+            Score School is the bridge. No degree required. No gatekeeping.
+            Just the practical skills to land your first scoring gig.
+        </p>
+        <a href="#signup" class="cta-btn">Join the Waitlist</a>
+        <p class="cta-note">Free. No spam. Just early access + exclusive content.</p>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="section">
+        <div class="section-label">The Problem</div>
+        <h2>You Can Write Music.<br>But Scoring Feels Different.</h2>
+        <p class="section-text">
+            You've got hundreds of beats, tracks, or compositions on your hard drive.
+            But when someone says "score this scene" — you freeze. Where do you even start?
+        </p>
+
+        <div class="pain-grid">
+            <div class="pain-card">
+                <div class="pain-icon">&#127917;</div>
+                <h3>"I'm not really a composer"</h3>
+                <p>You didn't go to conservatory. You taught yourself in your bedroom. You feel like scoring is for people with degrees and orchestras — not producers with laptops and sample libraries.</p>
+            </div>
+            <div class="pain-card">
+                <div class="pain-icon">&#128165;</div>
+                <h3>Writing to picture is a different skill</h3>
+                <p>Making a great beat is one thing. Writing music that serves someone else's story — hitting emotional beats, syncing to edits, building tension on a timeline — that's a whole new game.</p>
+            </div>
+            <div class="pain-card">
+                <div class="pain-icon">&#128561;</div>
+                <h3>The film world speaks a different language</h3>
+                <p>Cue sheets. Stems. Alt mixes. Spotting sessions. Temp scores. Nobody taught you any of this — and Googling it only gets you so far.</p>
+            </div>
+            <div class="pain-card">
+                <div class="pain-icon">&#128269;</div>
+                <h3>You don't know how to find the work</h3>
+                <p>Even if you could score a film tomorrow — where do you find directors who need music? How do you pitch? What do you charge? The business side is invisible until someone shows you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT YOU GET -->
+    <section class="section">
+        <div class="section-label">What You'll Learn</div>
+        <h2>From Producer to Scoring Gigs</h2>
+        <p class="section-text">
+            You already have the musical instincts. Score School gives you everything else —
+            the skills, the workflow, and the confidence to call yourself a composer.
+        </p>
+
+        <div class="modules">
+            <div class="module">
+                <div class="module-num">01</div>
+                <div>
+                    <h3>Scoring Fundamentals</h3>
+                    <p>Writing to picture, spotting sessions, building tension through atmosphere (not just jump scares), and understanding the director's vision.</p>
+                </div>
+            </div>
+            <div class="module">
+                <div class="module-num">02</div>
+                <div>
+                    <h3>The Technical Workflow</h3>
+                    <p>DAW templates for film, stems and deliverables, virtual orchestration techniques, and making sample libraries sound cinematic — not MIDI.</p>
+                </div>
+            </div>
+            <div class="module">
+                <div class="module-num">03</div>
+                <div>
+                    <h3>Finding & Landing Clients</h3>
+                    <p>Where filmmakers actually look for composers, how to build a reel that gets responses, cold outreach that works, and pricing your first scores.</p>
+                </div>
+            </div>
+            <div class="module">
+                <div class="module-num">04</div>
+                <div>
+                    <h3>The Business Side</h3>
+                    <p>Contracts, invoicing, cue sheets, publishing, and how to turn one project into a pipeline of referrals and repeat clients.</p>
+                </div>
+            </div>
+            <div class="module">
+                <div class="module-num">05</div>
+                <div>
+                    <h3>Live Reviews & Community</h3>
+                    <p>Submit your work for real feedback. Get eyes and ears on your scores from someone who's been in the trenches — plus a community of composers doing the same.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section">
+        <div class="section-label">Your Instructor</div>
+        <h2>Meet Tommy Arnold</h2>
+        <div class="about-flex">
+            <div class="about-img">
+                <span class="about-img-placeholder">Your photo here</span>
+            </div>
+            <div class="about-text">
+                <p>
+                    I spent 20 years making music before I ever scored a film. When I finally
+                    made the jump, I realized <strong>I already had the hardest part down</strong> —
+                    the musical instincts. What I was missing was the workflow, the language, and the confidence.
+                </p>
+                <p>
+                    I went to Berklee, scored 15+ indie films, and built a paying composer business from scratch.
+                    But honestly? Most of what I teach isn't stuff I learned in school.
+                    It's what I figured out by doing the work — and making every mistake first.
+                </p>
+                <p>
+                    <strong>Score School is the shortcut I wish I had.</strong>
+                </p>
+                <div class="credential-tags">
+                    <span class="credential-tag">Berklee '22</span>
+                    <span class="credential-tag">15+ Films</span>
+                    <span class="credential-tag">Horror & Thriller</span>
+                    <span class="credential-tag">Logic Pro</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+        <div class="section-label">FAQ</div>
+        <h2>Common Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-q">Do I need a music degree?</div>
+            <div class="faq-a">No. If you can write music in a DAW and have a feel for melody, harmony, and rhythm — you're ready. Some of the best film composers working today are self-taught. A degree helps, but it's not the barrier people think it is.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Who is this for?</div>
+            <div class="faq-a">Producers, beatmakers, songwriters, and self-taught musicians who want to break into scoring for film and games. You should be comfortable in a DAW — but you don't need any film or game audio experience. That's what we're here to teach.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">When does it launch?</div>
+            <div class="faq-a">We're targeting a launch in the coming months. Join the waitlist to be first in line — waitlist members get early access and a discounted founding member rate.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">How much will it cost?</div>
+            <div class="faq-a">Final pricing hasn't been set, but waitlist members will get a significant discount as founding members. The program will be priced to be accessible to independent musicians — not a $5,000 masterclass.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Is this just for horror composers?</div>
+            <div class="faq-a">The principles apply to all genres. My examples lean into horror and thriller because that's my specialty — but the workflows, business strategies, and client acquisition methods work across the board.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">What DAW do I need?</div>
+            <div class="faq-a">Any DAW works. I use Logic Pro, but the concepts translate to Ableton, Pro Tools, Cubase, Reaper — whatever you're comfortable in.</div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta" id="signup">
+        <div class="section-label">Don't Miss the Launch</div>
+        <h2>Get Early Access to Score School</h2>
+        <p>Join the waitlist for founding member pricing, free resources, and launch updates.</p>
+
+        <form class="signup-form" action="https://assets.mailerlite.com/jsonp/867530/forms/183226862533609115/subscribe" method="post">
+            <input type="email" name="fields[email]" placeholder="your@email.com" required>
+            <button type="submit" class="cta-btn">Join Waitlist</button>
+        </form>
+        <p class="cta-note">No spam. Unsubscribe anytime.</p>
+    </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <p>&copy; 2026 Score School &mdash; <a href="#">Tommy Arnold</a></p>
+        <p class="tagline">Learn to Score Film & Games</p>
+    </div>
+</footer>
+
+</body>
+</html>
