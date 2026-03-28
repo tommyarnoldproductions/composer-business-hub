@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tommy Arnold Productions — Business Blueprint v3</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --bg: #0a0a0c;
+    --surface: #131316;
+    --card: #19191e;
+    --border: #27272e;
+    --border-hover: #3a3a44;
+    --text: #dcdce0;
+    --text-dim: #76767e;
+    --text-faint: #4a4a52;
+    --white: #f0f0f2;
+    --film: #ff8c38;
+    --film-dim: rgba(255,140,56,0.12);
+    --film-glow: rgba(255,140,56,0.06);
+    --school: #38bfff;
+    --school-dim: rgba(56,191,255,0.12);
+    --school-glow: rgba(56,191,255,0.06);
+    --sync: #b388ff;
+    --sync-dim: rgba(179,136,255,0.12);
+    --sync-glow: rgba(179,136,255,0.06);
+    --content: #39ff6e;
+    --content-dim: rgba(57,255,110,0.12);
+    --content-glow: rgba(57,255,110,0.06);
+    --ops: #ffd740;
+    --ops-dim: rgba(255,215,64,0.12);
+    --ops-glow: rgba(255,215,64,0.06);
+    --red: #ff5c5c;
+    --red-dim: rgba(255,92,92,0.12);
+    --q2: #ff8c38;
+    --q3: #38bfff;
+    --q4: #39ff6e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-x: auto;
+  }
+
+  .blueprint {
+    min-width: 1360px;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 48px 40px 64px;
+  }
+
+  /* ── HEADER ── */
+  .header { text-align: center; margin-bottom: 56px; }
+
+  .header-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+  }
+
+  .header h1 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .header h1 span { color: var(--content); }
+
+  .header-sub {
+    font-size: 15px;
+    color: var(--text-dim);
+    font-weight: 400;
+    max-width: 620px;
+    margin: 0 auto 16px;
+  }
+
+  .north-star {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--surface);
+    border: 1px solid var(--content);
+    border-radius: 8px;
+    padding: 10px 24px;
+    margin-bottom: 20px;
+  }
+
+  .north-star-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--content);
+  }
+
+  .north-star-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .north-star-detail {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.5px;
+  }
+
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.8px;
+    color: var(--text-dim);
+  }
+
+  .legend-dot { width: 8px; height: 8px; border-radius: 2px; }
+
+  /* ── SECTION LABELS ── */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+    margin-top: 8px;
+  }
+
+  .section-label-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+
+  .section-label-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
+  }
+
+  /* ── MODULE CARDS ── */
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .module {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 22px 22px;
+    position: relative;
+    transition: all 0.35s ease;
+    overflow: hidden;
+  }
+
+  .module::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 10px 10px 0 0;
+    opacity: 0.8;
+  }
+
+  .module:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+  .module.film::before { background: var(--film); }
+  .module.film:hover { box-shadow: 0 8px 32px var(--film-glow); }
+  .module.school::before { background: var(--school); }
+  .module.school:hover { box-shadow: 0 8px 32px var(--school-glow); }
+  .module.sync::before { background: var(--sync); }
+  .module.sync:hover { box-shadow: 0 8px 32px var(--sync-glow); }
+  .module.cont::before { background: var(--content); }
+  .module.cont:hover { box-shadow: 0 8px 32px var(--content-glow); }
+  .module.ops::before { background: var(--ops); }
+  .module.ops:hover { box-shadow: 0 8px 32px var(--ops-glow); }
+
+  .module-icon { font-size: 22px; margin-bottom: 12px; display: block; }
+
+  .module-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .module.film .module-tag { color: var(--film); }
+  .module.school .module-tag { color: var(--school); }
+  .module.sync .module-tag { color: var(--sync); }
+  .module.cont .module-tag { color: var(--content); }
+  .module.ops .module-tag { color: var(--ops); }
+
+  .module-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .module-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .module-components {
+    list-style: none;
+    padding: 0;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+  }
+
+  .module-components li {
+    font-size: 12px;
+    color: var(--text);
+    padding: 4px 0 4px 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .module-components li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 11px;
+    width: 6px; height: 6px;
+    border-radius: 1px;
+    border: 1.5px solid var(--text-dim);
+  }
+
+  .module.film .module-components li::before { border-color: var(--film); }
+  .module.school .module-components li::before { border-color: var(--school); }
+  .module.sync .module-components li::before { border-color: var(--sync); }
+  .module.cont .module-components li::before { border-color: var(--content); }
+  .module.ops .module-components li::before { border-color: var(--ops); }
+
+  .module-tools { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 4px; }
+
+  .tool {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--text-faint);
+    border: 1px solid #222;
+    padding: 2px 7px;
+    border-radius: 3px;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── FLYWHEEL STRIP ── */
+  .flywheel-strip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 28px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .flywheel-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--content);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .flywheel-items { display: flex; gap: 12px; flex: 1; justify-content: center; flex-wrap: wrap; }
+  .flywheel-item { font-size: 12px; color: var(--text); display: flex; align-items: center; gap: 6px; }
+
+  .flywheel-arrow {
+    color: var(--content);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    opacity: 0.4;
+  }
+
+  /* ── FLOW CONNECTOR ── */
+  .flow-connector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0;
+    gap: 10px;
+  }
+
+  .flow-line { width: 40px; height: 2px; background: var(--border); border-radius: 1px; }
+
+  .flow-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--content);
+    opacity: 0.4;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.3); }
+  }
+
+  .flow-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── QUARTERLY ROADMAP ── */
+  .quarters-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .quarter {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .quarter-header {
+    padding: 18px 22px 14px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .quarter-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .quarter-dates { font-size: 12px; color: var(--text-dim); }
+
+  .quarter-theme {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-left: auto;
+    padding: 3px 10px;
+    border-radius: 3px;
+  }
+
+  .q2 .quarter-theme { color: var(--q2); background: rgba(255,140,56,0.1); border: 1px solid rgba(255,140,56,0.25); }
+  .q3 .quarter-theme { color: var(--q3); background: rgba(56,191,255,0.1); border: 1px solid rgba(56,191,255,0.25); }
+  .q4 .quarter-theme { color: var(--q4); background: rgba(57,255,110,0.1); border: 1px solid rgba(57,255,110,0.25); }
+
+  .quarter-body { padding: 18px 22px 22px; }
+
+  .priority {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+
+  .priority:last-child { margin-bottom: 0; }
+
+  .priority-node {
+    width: 30px; height: 30px; min-width: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+
+  .priority-node.film { background: var(--film-dim); color: var(--film); border: 2px solid var(--film); }
+  .priority-node.school { background: var(--school-dim); color: var(--school); border: 2px solid var(--school); }
+  .priority-node.sync { background: var(--sync-dim); color: var(--sync); border: 2px solid var(--sync); }
+  .priority-node.cont { background: var(--content-dim); color: var(--content); border: 2px solid var(--content); }
+  .priority-node.ops { background: var(--ops-dim); color: var(--ops); border: 2px solid var(--ops); }
+
+  .priority-content { flex: 1; }
+
+  .priority-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 2px;
+    line-height: 1.4;
+  }
+
+  .priority-detail {
+    font-size: 11.5px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .priority-tags { display: flex; gap: 4px; margin-top: 5px; flex-wrap: wrap; }
+
+  .priority-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 3px;
+  }
+
+  .priority-tag.film { color: var(--film); background: var(--film-dim); }
+  .priority-tag.school { color: var(--school); background: var(--school-dim); }
+  .priority-tag.sync { color: var(--sync); background: var(--sync-dim); }
+  .priority-tag.cont { color: var(--content); background: var(--content-dim); }
+  .priority-tag.ops { color: var(--ops); background: var(--ops-dim); }
+
+  /* ── MILESTONE BAR ── */
+  .milestone-bar {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 28px;
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  .milestone-segment { flex: 1; display: flex; align-items: center; gap: 12px; }
+
+  .milestone-diamond {
+    width: 12px; height: 12px;
+    transform: rotate(45deg);
+    flex-shrink: 0;
+    border: 2px solid;
+  }
+
+  .milestone-diamond.q2 { border-color: var(--q2); background: var(--film-dim); }
+  .milestone-diamond.q3 { border-color: var(--q3); background: var(--school-dim); }
+  .milestone-diamond.q4 { border-color: var(--q4); background: var(--content-dim); }
+
+  .milestone-text { font-size: 12px; color: var(--text); line-height: 1.4; }
+
+  .milestone-text strong {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 1px;
+  }
+
+  .milestone-text.q2 strong { color: var(--q2); }
+  .milestone-text.q3 strong { color: var(--q3); }
+  .milestone-text.q4 strong { color: var(--q4); }
+
+  .milestone-line { flex: 1; height: 1px; max-width: 60px; }
+  .milestone-line.q2-q3 { background: linear-gradient(90deg, var(--q2), var(--q3)); opacity: 0.3; }
+  .milestone-line.q3-q4 { background: linear-gradient(90deg, var(--q3), var(--q4)); opacity: 0.3; }
+
+  /* ── RISK & REVIEW SECTION ── */
+  .guardrails-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+
+  .guardrail-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 22px;
+    transition: all 0.3s ease;
+  }
+
+  .guardrail-card:hover { border-color: var(--border-hover); }
+
+  .guardrail-icon { font-size: 22px; margin-bottom: 10px; display: block; }
+
+  .guardrail-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .guardrail-sub {
+    font-size: 11px;
+    color: var(--text-dim);
+    font-style: italic;
+    margin-bottom: 14px;
+  }
+
+  .risk-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+
+  .risk-item:last-child { margin-bottom: 0; }
+
+  .risk-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .risk-label.threat { color: var(--red); }
+  .risk-label.fallback { color: var(--content); }
+
+  .risk-text {
+    font-size: 12px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .risk-fallback {
+    font-size: 11.5px;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px dashed var(--border);
+  }
+
+  .risk-fallback strong {
+    color: var(--content);
+    font-weight: 600;
+  }
+
+  .review-checklist {
+    list-style: none;
+    padding: 0;
+  }
+
+  .review-checklist li {
+    font-size: 12px;
+    color: var(--text);
+    padding: 6px 0 6px 22px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .review-checklist li::before {
+    content: '☐';
+    position: absolute;
+    left: 0;
+    color: var(--ops);
+    font-size: 13px;
+  }
+
+  .not-doing-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .not-doing-list li {
+    font-size: 12px;
+    color: var(--text);
+    padding: 8px 0 8px 22px;
+    position: relative;
+    line-height: 1.5;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .not-doing-list li:last-child { border-bottom: none; }
+
+  .not-doing-list li::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  .not-doing-why {
+    font-size: 11px;
+    color: var(--text-dim);
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* ── LONG-TERM VISION ── */
+  .vision-strip {
+    background: linear-gradient(135deg, rgba(57,255,110,0.04), rgba(179,136,255,0.04));
+    border: 1px dashed var(--content);
+    border-radius: 12px;
+    padding: 28px 32px;
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  .vision-header { flex-shrink: 0; text-align: center; min-width: 160px; }
+  .vision-header-icon { font-size: 28px; margin-bottom: 8px; display: block; }
+
+  .vision-header-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .vision-header-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .vision-divider { width: 1px; align-self: stretch; background: var(--border); flex-shrink: 0; }
+  .vision-assets { display: flex; gap: 28px; flex: 1; }
+  .vision-asset { flex: 1; }
+
+  .vision-asset-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  .vision-asset-tag.yt { color: var(--content); background: var(--content-dim); }
+  .vision-asset-tag.sync { color: var(--sync); background: var(--sync-dim); }
+
+  .vision-asset-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .vision-asset-desc { font-size: 12px; color: var(--text-dim); line-height: 1.6; margin-bottom: 8px; }
+
+  .vision-asset-compound {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 0.5px;
+  }
+
+  .vision-asset-compound span { color: var(--content); }
+
+  /* ── TOOLS & SERVICES ── */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+
+  .tool-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 18px 16px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+  .tool-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.3);
+  }
+
+  .tool-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+
+  .tool-card-icon {
+    width: 34px; height: 34px; min-width: 34px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+
+  .tool-card-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .tool-card-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+
+  .tool-card-desc { font-size: 12px; color: var(--text-dim); line-height: 1.55; margin-bottom: 12px; }
+  .tool-card-modules { display: flex; flex-wrap: wrap; gap: 4px; }
+
+  .tool-module-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 3px;
+  }
+
+  .tool-module-tag.film { color: var(--film); background: var(--film-dim); }
+  .tool-module-tag.school { color: var(--school); background: var(--school-dim); }
+  .tool-module-tag.sync { color: var(--sync); background: var(--sync-dim); }
+  .tool-module-tag.cont { color: var(--content); background: var(--content-dim); }
+  .tool-module-tag.ops { color: var(--ops); background: var(--ops-dim); }
+
+  .tool-card-icon.orange { background: var(--film-dim); border: 1px solid rgba(255,140,56,0.2); }
+  .tool-card-icon.blue { background: var(--school-dim); border: 1px solid rgba(56,191,255,0.2); }
+  .tool-card-icon.purple { background: var(--sync-dim); border: 1px solid rgba(179,136,255,0.2); }
+  .tool-card-icon.green { background: var(--content-dim); border: 1px solid rgba(57,255,110,0.2); }
+  .tool-card-icon.yellow { background: var(--ops-dim); border: 1px solid rgba(255,215,64,0.2); }
+  .tool-card-icon.gray { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-main {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+  }
+
+  .footer-accent {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--content);
+    margin-top: 6px;
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+<div class="blueprint">
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- HEADER + NORTH STAR                         -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="header">
+    <div class="header-label">Business Blueprint v3.0 · March 2026</div>
+    <h1>Tommy Arnold <span>Productions</span></h1>
+    <div class="header-sub">A full ecosystem map for building a sustainable composing business — film scoring, education, sync licensing, and the engine that connects them all.</div>
+    <div class="north-star">
+      <div>
+        <div class="north-star-label">★ North Star Target</div>
+        <div class="north-star-value">$5,000 /mo</div>
+        <div class="north-star-detail">Combined revenue across all tracks → W2 replacement path</div>
+      </div>
+    </div>
+    <br>
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--film)"></div> Film Scoring</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--school)"></div> ScoreSchool</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--sync)"></div> Sync / Library</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--content)"></div> Content &amp; Audience</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--ops)"></div> Operations &amp; Finance</div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- HIGH-LEVEL MODULES                          -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="section-label">
+    <span class="section-label-text">The Business — High-Level Modules</span>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="modules-grid">
+
+    <div class="module film">
+      <span class="module-icon">🎬</span>
+      <div class="module-tag">Module 01</div>
+      <div class="module-title">Film Scoring</div>
+      <div class="module-desc">High-ticket client work with independent filmmakers. Revenue is project-based and inconsistent by nature, which is why the other tracks exist. The goal is a growing roster of repeat directors who trust you with their vision.</div>
+      <ul class="module-components">
+        <li>IMDb Pro research &amp; cold outreach pipeline</li>
+        <li>Discovery calls → scoping → pricing</li>
+        <li>Composition, revision cycles &amp; stem delivery</li>
+        <li>Genre-specific portfolio reels as proof of work</li>
+        <li>CRM pipeline tracking (research → closed)</li>
+      </ul>
+      <div class="module-tools">
+        <span class="tool">IMDb Pro</span>
+        <span class="tool">Notion CRM</span>
+        <span class="tool">ReelCrafter</span>
+        <span class="tool">Dropbox</span>
+      </div>
+    </div>
+
+    <div class="module school">
+      <span class="module-icon">🎓</span>
+      <div class="module-tag">Module 02</div>
+      <div class="module-title">ScoreSchool</div>
+      <div class="module-desc">A 6-module, 22-lesson pre-recorded course ("Score Your First Scene") targeting musicians who want to break into film scoring. This is the recurring revenue engine — scalable, not dependent on project-by-project work. YouTube drives long-term organic discovery; Instagram ads drive near-term paid acquisition.</div>
+      <ul class="module-components">
+        <li>Course content creation &amp; production</li>
+        <li>YouTube → organic discovery → email list → course offer</li>
+        <li>Instagram ads + ManyChat → paid acquisition</li>
+        <li>Lead magnet → email list → course offer funnel</li>
+        <li>Payhip storefront &amp; checkout</li>
+        <li>Student feedback loop → course iteration</li>
+      </ul>
+      <div class="module-tools">
+        <span class="tool">Payhip</span>
+        <span class="tool">MailerLite</span>
+        <span class="tool">ManyChat</span>
+        <span class="tool">YouTube</span>
+        <span class="tool">Instagram</span>
+      </div>
+    </div>
+
+    <div class="module sync">
+      <span class="module-icon">📡</span>
+      <div class="module-tag">Module 03</div>
+      <div class="module-title">Sync &amp; Library</div>
+      <div class="module-desc">Genre-specific library albums placed with a sync library that has already signed multiple of your albums. Passive royalty income that compounds over time. This is one of two long-term retirement assets — a growing catalog generates royalties indefinitely, scaling with every album added over the next 10–15 years.</div>
+      <ul class="module-components">
+        <li>True crime album (in progress) + future genre albums</li>
+        <li>Broadcast-ready mixes, masters &amp; metadata</li>
+        <li>Relationship management with library contacts</li>
+        <li>Catalog growth strategy: more albums = more placements</li>
+        <li>Long-term vision: compounding royalty income as retirement asset</li>
+      </ul>
+      <div class="module-tools">
+        <span class="tool">DAW</span>
+        <span class="tool">Dropbox</span>
+      </div>
+    </div>
+
+    <div class="module cont">
+      <span class="module-icon">📣</span>
+      <div class="module-tag">Module 04</div>
+      <div class="module-title">Content &amp; Audience</div>
+      <div class="module-desc">The engine that feeds both funnels. YouTube is the primary platform (747 subs and growing) — slow growth but the greatest long-term reach, discoverability, and income potential. This is the second long-term retirement asset alongside sync royalties. Instagram supports with short-form and DM-based funnels. Email is the conversion layer.</div>
+      <ul class="module-components">
+        <li>YouTube: long-form scoring breakdowns, tutorials, BTS (primary)</li>
+        <li>Instagram: short-form reels, DM funnels, filmmaker relationships (supporting)</li>
+        <li>Email list growth → 100+ subs milestone</li>
+        <li>Substack + MailerLite audience consolidation</li>
+        <li>ManyChat triggers: "COMPOSER" &amp; "DEMO"</li>
+        <li>Content → lead magnet → email → offer pipeline</li>
+      </ul>
+      <div class="module-tools">
+        <span class="tool">YouTube</span>
+        <span class="tool">Instagram</span>
+        <span class="tool">MailerLite</span>
+        <span class="tool">ManyChat</span>
+        <span class="tool">Substack</span>
+        <span class="tool">Payhip</span>
+      </div>
+    </div>
+
+    <div class="module ops">
+      <span class="module-icon">⚙️</span>
+      <div class="module-tag">Module 05</div>
+      <div class="module-title">Operations &amp; Finance</div>
+      <div class="module-desc">The systems layer that keeps everything running without relying on memory. Strategic project management in Notion with two-way sync to Todoist for daily execution, financials in QuickBooks, and automation replacing manual workflows.</div>
+      <ul class="module-components">
+        <li>Notion: Master CRM, project management, databases</li>
+        <li>Todoist: daily tasks with two-way Notion sync via 2sync.io</li>
+        <li>QuickBooks bookkeeping &amp; PayPal reconciliation</li>
+        <li>Schedule C tax filing (sole proprietor)</li>
+        <li>ManyChat + MailerLite automation stack</li>
+        <li>KPI tracking: CAC, ROAS, revenue by track</li>
+      </ul>
+      <div class="module-tools">
+        <span class="tool">Notion</span>
+        <span class="tool">Todoist</span>
+        <span class="tool">QuickBooks</span>
+        <span class="tool">TurboTax</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FLYWHEEL -->
+  <div class="flywheel-strip">
+    <div class="flywheel-label">⟳ Flywheel</div>
+    <div class="flywheel-items">
+      <span class="flywheel-item" style="color:var(--film)">Film projects become YouTube content</span>
+      <span class="flywheel-arrow">→</span>
+      <span class="flywheel-item" style="color:var(--content)">YouTube builds authority &amp; discovery</span>
+      <span class="flywheel-arrow">→</span>
+      <span class="flywheel-item" style="color:var(--school)">Viewers convert to course students</span>
+      <span class="flywheel-arrow">→</span>
+      <span class="flywheel-item" style="color:var(--sync)">Sync placements build credits</span>
+      <span class="flywheel-arrow">→</span>
+      <span class="flywheel-item" style="color:var(--ops)">Revenue funds growth</span>
+      <span class="flywheel-arrow" style="color:var(--film)">⟳</span>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- QUARTERLY ROADMAP                           -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="flow-connector">
+    <div class="flow-line"></div>
+    <div class="flow-dot"></div>
+    <span class="flow-text">Priorities to reach $5K/mo within the year</span>
+    <div class="flow-dot"></div>
+    <div class="flow-line"></div>
+  </div>
+
+  <div class="section-label" style="margin-top: 24px;">
+    <span class="section-label-text">2026 Quarterly Priority Roadmap</span>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="quarters-grid">
+
+    <!-- Q2 -->
+    <div class="quarter q2">
+      <div class="quarter-header">
+        <span class="quarter-name">Q2</span>
+        <span class="quarter-dates">Apr – Jun 2026</span>
+        <span class="quarter-theme">Launch &amp; Validate</span>
+      </div>
+      <div class="quarter-body">
+        <div class="priority">
+          <div class="priority-node school">S</div>
+          <div class="priority-content">
+            <div class="priority-title">Soft-launch ScoreSchool</div>
+            <div class="priority-detail">Ship "Score Your First Scene" to email list at early-bird price. Collect 5+ testimonials. Fix friction in checkout and onboarding.</div>
+            <div class="priority-tags"><span class="priority-tag school">ScoreSchool</span></div>
+          </div>
+        </div>
+        <div class="priority">
+          <div class="priority-node cont">C</div>
+          <div class="priority-content">
+            <div class="priority-title">YouTube: grow to 1,000 subs &amp; increase upload cadence</div>
+            <div class="priority-detail">Currently at 747 subs. Push toward monetization threshold. Commit to biweekly uploads minimum — scoring breakdowns, tutorials, BTS. Repurpose to Instagram Reels.</div>
+            <div class="priority-tags"><span class="priority-tag cont">Content</span><span class="priority-tag school">ScoreSchool</span><span class="priority-tag film">Film</span></div>
+          </div>
+        </div>
+        <div class="priority">
+          <div class="priority-node cont">C</div>
+          <div class="priority-content">
+            <div class="priority-title">Hit 100 email subscribers</div>
+            <div class="priority-detail">Consolidate Substack + MailerLite into one list. Run "COMPOSER" ad campaigns targeting California. YouTube descriptions drive to lead magnets.</div>
+            <div class="priority-tags"><span class="priority-tag cont">Content</span><span class="priority-tag school">ScoreSchool</span></div>
+          </div>
+        </div>
+        <div class="priority">
+          <div class="priority-node sync">L</div>
+          <div class="priority-content">
+            <div class="priority-title">Deliver true crime library album</div>
+            <div class="priority-detail">Complete remaining tracks, masters, and metadata. Hit the library deadline. Protect this relationship — it's a recurring placement pipeline.</div>
+            <div class="priority-tags"><span class="priority-tag sync">Sync</span></div>
+          </div>
+        </div>
+        <div class="priority">
+          <div class="priority-node film">F</div>
+          <div class="priority-content">
+            <div class="priority-title">Book 2 discovery calls</div>
+            <div class="priority-detail">Follow up with Jada Trabue. Activate daily IMDb Pro outreach workflow. Send 3–5 personalized emails/DMs per day.</div>
+            <div class="priority-tags"><span class="priority-tag film">Film</span></div>
+          </div>
+        </div>
+        <div class="priority">
+          <div class="priority-node ops">O</div>
+          <div class="priority-content">
+            <div class="priority-title">Clean up financials</div>
+            <div class="priority-detail">Reconcile PayPal → QuickBooks. File Schedule C. Establish monthly revenue tracking by business track toward $5K target.</div>
+            <div class="priority-tags"><span class="priority-tag ops">Ops</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="quarter q3">
+      <div class="quarter-header">
+        <span class="quarter-name">Q3</span>
+        <span class="quarter-dates">Jul – Sep 2026</span>
+        <span class="quarter-theme">Scale &amp; Optimize</span>
+      </div>
+      <div class="quarter-body">
+        <div class="priority">
+          <div class="priority-node school">S</div>
+          <div class="priority-content">
+            <div class="priority-title">Scale ScoreSchool ads on proven funnels</div>
+            <div class="priority-detail">Increase ad budget on winning geo/creative combos. Target: course revenue covers ad spend (breakeven). Iterate course based on first-cohort feedback.</div>
+            <div class="priority-tags"><span class="priority-tag school">ScoreSchool</span><span class="priority-tag ops">Ops</span></div>
+          </div>
+        </div>
+        <div class="priority">
+          <div class="priority-node cont">C</div>
+          <div class="priority-content">
+            <div class="priority-title">YouTube: consistent uploads, refine what gets retention</div>
+            <div class="priority-detail">Analyze which formats get retention and subscribers. Double down on winners. Build email nurture sequence now that list is 100+. Segment filmmaker vs. student.</div>
+            <div class="priority-tags"><span class="priority-tag cont">Content</span></div>
+          </div>
+        </div>
+        <div class="priority">
+          <div class="priority-node film">F</div>
+          <div class="priority-content">
+            <div class="priority-title">Land a paid film scoring project</div>
+            <div class="priority-detail">Convert outreach pipeline into a signed project. Use Jada Trabue collaboration (if closed) as fresh social proof and case study content.</div>
+            <div class="priority-tags"><span class="priority-tag film">Film</span><span class="priority-tag cont">Content</span></div>
+          </div>
+        </div>
+        <div class="priority">
+          <div class="priority-node sync">L</div>
+          <div class="priority-content">
+            <div class="priority-title">Start second library album</div>
+            <div class="priority-detail">Pitch next genre concept to library. Begin production on album #2. Goal: keep the pipeline warm so placement slots stay open.</div>
+            <div class="priority-tags"><span class="priority-tag sync">Sync</span></div>
+          </div>
+        </div>
+        <div class="priority">
+          <div class="priority-node ops">O</div>
+          <div class="priority-content">
+            <div class="priority-title">Automate outreach &amp; follow-up</div>
+            <div class="priority-detail">Template cold emails in Notion CRM. Build follow-up reminders into the pipeline. Reduce manual outreach time per contact.</div>
+            <div class="priority-tags"><span class="priority-tag ops">Ops</span><span class="priority-tag film">Film</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="quarter q4">
+      <div class="quarter-header">
+        <span class="quarter-name">Q4</span>
+        <span class="quarter-dates">Oct – Dec 2026</span>
+        <span class="quarter-theme">Compound &amp; Plan 2027</span>
+      </div>
+      <div class="quarter-body">
+        <div class="priority">
+          <div class="priority-node school">S</div>
+          <div class="priority-content">
+            <div class="priority-title">Launch ScoreSchool at full price</div>
+            <div class="priority-detail">End early-bird pricing. Full marketing push with testimonials, case studies, and proven ad funnels. Evaluate: advanced course or 1:1 mentoring add-on?</div>
+            <div class="priority-tags"><span class="priority-tag school">ScoreSchool</span></div>
+          </div>
+        </div>
+        <div class="priority">
+          <div class="priority-node film">F</div>
+          <div class="priority-content">
+            <div class="priority-title">Build a repeat-client relationship</div>
+            <div class="priority-detail">Follow up with past clients. Aim for a second project from a previous director. Begin raising rates based on accumulated credits.</div>
+            <div class="priority-tags"><span class="priority-tag film">Film</span></div>
+          </div>
+        </div>
+        <div class="priority">
+          <div class="priority-node cont">C</div>
+          <div class="priority-content">
+            <div class="priority-title">250+ email subs · YouTube generating organic leads</div>
+            <div class="priority-detail">YouTube should be producing a steady trickle of subscribers and course inquiries. This is Year 1 of a 10–15 year compounding asset. Evaluate YouTube ad revenue potential.</div>
+            <div class="priority-tags"><span class="priority-tag cont">Content</span><span class="priority-tag school">ScoreSchool</span></div>
+          </div>
+        </div>
+        <div class="priority">
+          <div class="priority-node sync">L</div>
+          <div class="priority-content">
+            <div class="priority-title">Two albums generating royalties</div>
+            <div class="priority-detail">True crime album should have placements by now. Second album delivered or near-complete. Track royalty revenue as its own line item.</div>
+            <div class="priority-tags"><span class="priority-tag sync">Sync</span><span class="priority-tag ops">Ops</span></div>
+          </div>
+        </div>
+        <div class="priority">
+          <div class="priority-node ops">O</div>
+          <div class="priority-content">
+            <div class="priority-title">Full-year financial review &amp; 2027 plan</div>
+            <div class="priority-detail">Revenue by track analysis. How close to $5K/mo? Set 2027 milestones. Decide: new products? Adjusted timeline to go full-time?</div>
+            <div class="priority-tags"><span class="priority-tag ops">Ops</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MILESTONE BAR -->
+  <div class="milestone-bar">
+    <div class="milestone-segment">
+      <div class="milestone-diamond q2"></div>
+      <div class="milestone-text q2">
+        <strong>End of Q2 Gate</strong>
+        Course launched · 100 email subs · 1K YT subs · Library album shipped · Tax filed
+      </div>
+    </div>
+    <div class="milestone-line q2-q3"></div>
+    <div class="milestone-segment">
+      <div class="milestone-diamond q3"></div>
+      <div class="milestone-text q3">
+        <strong>End of Q3 Gate</strong>
+        Ad spend ≤ course revenue · Paid film project · Nurture live · Album #2 started
+      </div>
+    </div>
+    <div class="milestone-line q3-q4"></div>
+    <div class="milestone-segment">
+      <div class="milestone-diamond q4"></div>
+      <div class="milestone-text q4">
+        <strong>End of Q4 Gate</strong>
+        Full-price course · 250 subs · YT organic leads · 2 albums earning · $5K/mo assessment
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- GUARDRAILS: RISKS, REVIEW, NOT-DOING        -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="flow-connector" style="margin-top: 24px;">
+    <div class="flow-line"></div>
+    <div class="flow-dot"></div>
+    <span class="flow-text">Guardrails — Stay focused, stay accountable</span>
+    <div class="flow-dot"></div>
+    <div class="flow-line"></div>
+  </div>
+
+  <div class="section-label" style="margin-top: 24px;">
+    <span class="section-label-text">Risk Contingencies · Weekly Review · Boundaries</span>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="guardrails-grid">
+
+    <!-- RISKS -->
+    <div class="guardrail-card">
+      <span class="guardrail-icon">⚠️</span>
+      <div class="guardrail-title">Risk &amp; Contingency</div>
+      <div class="guardrail-sub">If X happens, the fallback is Y.</div>
+
+      <div class="risk-item">
+        <div class="risk-text">ScoreSchool launch underperforms or flops</div>
+        <div class="risk-fallback"><strong>Fallback:</strong> Treat soft launch as market research. Survey early buyers for what's missing. Adjust pricing, positioning, or content before scaling ads. Don't pour ad spend into a broken funnel.</div>
+      </div>
+
+      <div class="risk-item">
+        <div class="risk-text">No film scoring projects close for an extended stretch</div>
+        <div class="risk-fallback"><strong>Fallback:</strong> Double down on outreach volume (increase to 5–8 contacts/day). Use the freed-up creative time to accelerate sync albums and ScoreSchool content — both generate revenue without clients.</div>
+      </div>
+
+      <div class="risk-item">
+        <div class="risk-text">YouTube growth is slower than expected</div>
+        <div class="risk-fallback"><strong>Fallback:</strong> This is a 10-year play — don't abandon it after 6 months. Instead, audit: are titles/thumbnails optimized? Is retention dropping at a specific point? Shift formats, not platforms. Instagram ads carry the short-term acquisition load.</div>
+      </div>
+
+      <div class="risk-item">
+        <div class="risk-text">Burnout from balancing Apple + business building</div>
+        <div class="risk-fallback"><strong>Fallback:</strong> Protect composing time above all else. Cut low-ROI activities first (not outreach or content). Reduce upload cadence to weekly before stopping entirely. A slower pace beats a full stop.</div>
+      </div>
+    </div>
+
+    <!-- WEEKLY REVIEW -->
+    <div class="guardrail-card">
+      <span class="guardrail-icon">📋</span>
+      <div class="guardrail-title">Sunday Night Review</div>
+      <div class="guardrail-sub">30 minutes. Every week. Non-negotiable.</div>
+
+      <ul class="review-checklist">
+        <li><strong>Revenue:</strong> Any income this week? Which track? Running total toward $5K/mo.</li>
+        <li><strong>Email list:</strong> New subscribers this week? Current total vs. quarterly target.</li>
+        <li><strong>YouTube:</strong> Videos published? Views, retention rate, new subs this week.</li>
+        <li><strong>Outreach:</strong> How many contacts made? Responses? Calls booked?</li>
+        <li><strong>Ad spend:</strong> Amount spent vs. leads generated. CAC trending up or down?</li>
+        <li><strong>ScoreSchool:</strong> Sales this week? Testimonials collected? Funnel friction spotted?</li>
+        <li><strong>Sync:</strong> Progress on current album. On track for deadline?</li>
+        <li><strong>Energy check:</strong> Am I burning out? What do I need to cut or protect this week?</li>
+        <li><strong>Top 3 priorities</strong> for next week → add to Todoist.</li>
+      </ul>
+    </div>
+
+    <!-- NOT DOING -->
+    <div class="guardrail-card">
+      <span class="guardrail-icon">🚫</span>
+      <div class="guardrail-title">Not Doing in 2026</div>
+      <div class="guardrail-sub">Explicit boundaries to protect focus and time.</div>
+
+      <ul class="not-doing-list">
+        <li>
+          Building a team or hiring before hitting $5K/mo
+          <span class="not-doing-why">Premature overhead kills solopreneur businesses. Prove the revenue model first, then invest in help.</span>
+        </li>
+        <li>
+          Accepting free or low-budget film projects for "exposure"
+          <span class="not-doing-why">Exposure doesn't pay bills or compound. Every hour spent on free work is an hour not spent on ScoreSchool, sync albums, YouTube, or paid outreach. Your Berklee degree and Indie Memphis credits are your proof — you don't need to work for free.</span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- LONG-TERM RETIREMENT VISION                 -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="flow-connector" style="margin-top: 24px;">
+    <div class="flow-line"></div>
+    <div class="flow-dot"></div>
+    <span class="flow-text">The 10–15 Year Compounding Horizon</span>
+    <div class="flow-dot"></div>
+    <div class="flow-line"></div>
+  </div>
+
+  <div class="section-label" style="margin-top: 24px;">
+    <span class="section-label-text">Long-Term Retirement Assets</span>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="vision-strip">
+    <div class="vision-header">
+      <span class="vision-header-icon">📈</span>
+      <div class="vision-header-label">The Thesis</div>
+      <div class="vision-header-sub">Two assets that<br>compound while<br>you sleep</div>
+    </div>
+    <div class="vision-divider"></div>
+    <div class="vision-assets">
+      <div class="vision-asset">
+        <div class="vision-asset-tag yt">YouTube Channel</div>
+        <div class="vision-asset-title">Audience as Asset</div>
+        <div class="vision-asset-desc">Every video published works forever. A library of scoring breakdowns, tutorials, and behind-the-scenes content builds an audience that compounds year over year. Revenue streams layer on top: ad revenue, course sales, sponsorships, and filmmaker inbound. The channel you build in 2026 is still generating income in 2036.</div>
+        <div class="vision-asset-compound">Year 1: Foundation · Year 3: Traction · Year 5: Revenue stream · <span>Year 10+: Retirement-grade asset</span></div>
+      </div>
+      <div class="vision-asset">
+        <div class="vision-asset-tag sync">Sync Catalog</div>
+        <div class="vision-asset-title">Catalog as Asset</div>
+        <div class="vision-asset-desc">Every album placed generates royalties indefinitely. The catalog grows with each new album — more tracks in more genres means more placement opportunities. Unlike project work that resets to zero, royalty income is cumulative. The albums you deliver in 2026 are still earning in 2040.</div>
+        <div class="vision-asset-compound">2 albums/yr × 10 yrs = <span>20+ albums generating passive royalties</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- TOOLS & SERVICES STACK                      -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="flow-connector" style="margin-top: 36px;">
+    <div class="flow-line"></div>
+    <div class="flow-dot"></div>
+    <span class="flow-text">Powered by</span>
+    <div class="flow-dot"></div>
+    <div class="flow-line"></div>
+  </div>
+
+  <div class="section-label" style="margin-top: 24px;">
+    <span class="section-label-text">Tools &amp; Services Stack</span>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="tools-grid">
+
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-card-icon yellow">📋</div>
+        <div>
+          <div class="tool-card-name">Notion</div>
+          <div class="tool-card-type">Project Management &amp; CRM</div>
+        </div>
+      </div>
+      <div class="tool-card-desc">Central command for the entire business. Houses the Master CRM (directors, libraries, contacts — 25+ records with board and filtered views), strategic project management, and all databases. Where planning happens before execution moves to Todoist.</div>
+      <div class="tool-card-modules">
+        <span class="tool-module-tag film">Film</span>
+        <span class="tool-module-tag school">ScoreSchool</span>
+        <span class="tool-module-tag ops">Ops</span>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-card-icon green">✉️</div>
+        <div>
+          <div class="tool-card-name">MailerLite</div>
+          <div class="tool-card-type">Email Marketing</div>
+        </div>
+      </div>
+      <div class="tool-card-desc">Primary email list platform. Captures subscribers from ManyChat, YouTube descriptions, and Payhip lead magnets. Will house the nurture sequence and segmented campaigns (filmmaker vs. student) once list hits 100+. Consolidating Substack audience here.</div>
+      <div class="tool-card-modules">
+        <span class="tool-module-tag school">ScoreSchool</span>
+        <span class="tool-module-tag cont">Content</span>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-card-icon blue">💬</div>
+        <div>
+          <div class="tool-card-name">ManyChat</div>
+          <div class="tool-card-type">DM Automation</div>
+        </div>
+      </div>
+      <div class="tool-card-desc">Instagram comment-trigger automations. "Comment COMPOSER" drives ScoreSchool leads to Payhip links. "Comment DEMO" drives filmmaker leads to discovery call bookings. Replaces manual DM responses that caused drop-off.</div>
+      <div class="tool-card-modules">
+        <span class="tool-module-tag school">ScoreSchool</span>
+        <span class="tool-module-tag film">Film</span>
+        <span class="tool-module-tag cont">Content</span>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-card-icon green">▶️</div>
+        <div>
+          <div class="tool-card-name">YouTube</div>
+          <div class="tool-card-type">Primary Social Platform</div>
+        </div>
+      </div>
+      <div class="tool-card-desc">The long-term centerpiece of the content strategy. Currently at 747 subscribers. Slow growth, but unmatched discoverability and compounding returns — videos work for years, not hours. Also a retirement income asset (ad revenue + course funnels) alongside sync royalties over a 10–15 year horizon.</div>
+      <div class="tool-card-modules">
+        <span class="tool-module-tag cont">Content</span>
+        <span class="tool-module-tag school">ScoreSchool</span>
+        <span class="tool-module-tag film">Film</span>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-card-icon purple">📸</div>
+        <div>
+          <div class="tool-card-name">Instagram</div>
+          <div class="tool-card-type">Supporting Social Platform</div>
+        </div>
+      </div>
+      <div class="tool-card-desc">Supporting platform for short-form clips repurposed from YouTube, DM-based funnels via ManyChat, and organic filmmaker relationship-building. Paid ads run here targeting California for ScoreSchool acquisition.</div>
+      <div class="tool-card-modules">
+        <span class="tool-module-tag film">Film</span>
+        <span class="tool-module-tag school">ScoreSchool</span>
+        <span class="tool-module-tag cont">Content</span>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-card-icon orange">🎬</div>
+        <div>
+          <div class="tool-card-name">IMDb Pro</div>
+          <div class="tool-card-type">Filmmaker Research</div>
+        </div>
+      </div>
+      <div class="tool-card-desc">Daily research tool for finding outreach targets. Filter: indie directors with 1–3 credits, no composer attached, in pre-production/filming/post-production, across horror, thriller, drama, and sci-fi genres.</div>
+      <div class="tool-card-modules">
+        <span class="tool-module-tag film">Film</span>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-card-icon orange">🎞️</div>
+        <div>
+          <div class="tool-card-name">ReelCrafter</div>
+          <div class="tool-card-type">Portfolio Reels</div>
+        </div>
+      </div>
+      <div class="tool-card-desc">Genre-specific portfolio reels that serve as proof of work during outreach and discovery calls. General reel live with neon green/black branding. Can create targeted reels (horror-only, thriller-only) for specific pitches.</div>
+      <div class="tool-card-modules">
+        <span class="tool-module-tag film">Film</span>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-card-icon blue">🛒</div>
+        <div>
+          <div class="tool-card-name">Payhip</div>
+          <div class="tool-card-type">Digital Product Sales</div>
+        </div>
+      </div>
+      <div class="tool-card-desc">Storefront for all digital products — the ScoreSchool course, ebooks, and free lead magnets. Checkout links are delivered via ManyChat auto-DMs. Handles payments, delivery, and email capture in one place.</div>
+      <div class="tool-card-modules">
+        <span class="tool-module-tag school">ScoreSchool</span>
+        <span class="tool-module-tag cont">Content</span>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-card-icon green">📝</div>
+        <div>
+          <div class="tool-card-name">Substack</div>
+          <div class="tool-card-type">Long-Form Articles</div>
+        </div>
+      </div>
+      <div class="tool-card-desc">Regular article publishing for authority-building content. Currently running as a separate list from MailerLite — consolidation under consideration to avoid managing two fragmented audiences.</div>
+      <div class="tool-card-modules">
+        <span class="tool-module-tag cont">Content</span>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-card-icon yellow">💰</div>
+        <div>
+          <div class="tool-card-name">QuickBooks</div>
+          <div class="tool-card-type">Bookkeeping &amp; Banking</div>
+        </div>
+      </div>
+      <div class="tool-card-desc">Business banking and bookkeeping hub. Mid-year transition from PayPal Business — historical PayPal data needs reconciliation. Tracks revenue by business track, expenses, ad spend, and feeds Schedule C tax filing.</div>
+      <div class="tool-card-modules">
+        <span class="tool-module-tag ops">Ops</span>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-card-icon gray">📁</div>
+        <div>
+          <div class="tool-card-name">Dropbox</div>
+          <div class="tool-card-type">File Storage &amp; Delivery</div>
+        </div>
+      </div>
+      <div class="tool-card-desc">File storage and client delivery system. Houses project folders with versioning (v1, v1.1, v2 with creator initials/date). Structure: /Project/Pillar/Date/RAW/EDITS/ASSETS/EXPORTS. Also stores library album deliverables.</div>
+      <div class="tool-card-modules">
+        <span class="tool-module-tag film">Film</span>
+        <span class="tool-module-tag sync">Sync</span>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-card-icon gray">✅</div>
+        <div>
+          <div class="tool-card-name">Todoist</div>
+          <div class="tool-card-type">Daily Task Management</div>
+        </div>
+      </div>
+      <div class="tool-card-desc">Daily personal and business task execution with two-way sync to Notion via 2sync.io. Strategic planning lives in Notion, but Todoist is the daily driver — tasks flow between both systems automatically so nothing falls through the cracks.</div>
+      <div class="tool-card-modules">
+        <span class="tool-module-tag ops">Ops</span>
+      </div>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-card-header">
+        <div class="tool-card-icon green">🌐</div>
+        <div>
+          <div class="tool-card-name">tommyarnoldmusic.com</div>
+          <div class="tool-card-type">Website &amp; Hub</div>
+        </div>
+      </div>
+      <div class="tool-card-desc">Central hub connecting all tracks. Landing point for filmmaker outreach (reel embeds, contact), ScoreSchool course info, and authority content. Everything links back here.</div>
+      <div class="tool-card-modules">
+        <span class="tool-module-tag film">Film</span>
+        <span class="tool-module-tag school">ScoreSchool</span>
+        <span class="tool-module-tag cont">Content</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- FOOTER                                      -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="footer">
+    <div class="footer-main">Tommy Arnold Productions — Business Blueprint v3.0 — March 2026</div>
+    <div class="footer-accent">Horror · Suspense · Psychological Thriller — tommyarnoldmusic.com</div>
+  </div>
+
+</div>
+</body>
+</html>

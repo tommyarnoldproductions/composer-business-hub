@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Kit — Tommy Arnold Productions & ScoreSchool</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+  :root {
+    /* TAP Colors */
+    --tap-black: #0F0F0F;
+    --tap-surface: #1A1A1A;
+    --tap-card: #202020;
+    --tap-green: #5DD62C;
+    --tap-green-deep: #337418;
+    --tap-green-glow: #4AE01E;
+    --tap-red: #8B0000;
+    --tap-red-bright: #B91C1C;
+    --tap-gold: #C8B560;
+    --tap-gray: #666666;
+    --tap-white: #F8F8F8;
+
+    /* ScoreSchool Colors */
+    --ss-navy-deep: #0D1B2A;
+    --ss-navy: #1B2D45;
+    --ss-navy-mid: #2C3E50;
+    --ss-gold: #D4A843;
+    --ss-gold-soft: #E8D5A3;
+    --ss-cream: #F5F0E8;
+    --ss-text: #C8C0B4;
+    --ss-accent: #C8E632;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #080808;
+    color: #ccc;
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== NAVIGATION ===== */
+  .topnav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background: rgba(8,8,8,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    z-index: 100;
+  }
+  .topnav-brand {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--tap-green);
+    text-transform: uppercase;
+  }
+  .topnav-links {
+    display: flex;
+    gap: 32px;
+  }
+  .topnav-links a {
+    color: #555;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .topnav-links a:hover { color: #fff; }
+  .topnav-links a.active { color: var(--tap-green); }
+
+  /* ===== LAYOUT ===== */
+  .main { margin-top: 56px; }
+
+  .section {
+    padding: 72px 60px;
+    border-bottom: 1px solid #141414;
+  }
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--tap-green);
+    letter-spacing: 2px;
+    opacity: 0.7;
+    margin-bottom: 8px;
+  }
+  .section-label.gold { color: var(--ss-gold); }
+  .section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .section .lead {
+    font-size: 15px;
+    color: #666;
+    max-width: 700px;
+    margin-bottom: 48px;
+  }
+
+  /* ===== BRAND TOGGLE HEADER ===== */
+  .brand-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .brand-pill {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 100px;
+    border: 1px solid;
+  }
+  .brand-pill.tap {
+    background: rgba(93,214,44,0.1);
+    border-color: rgba(93,214,44,0.3);
+    color: var(--tap-green);
+  }
+  .brand-pill.ss {
+    background: rgba(212,168,67,0.1);
+    border-color: rgba(212,168,67,0.3);
+    color: var(--ss-gold);
+  }
+
+  /* ===== COVER ===== */
+  .cover {
+    height: 70vh;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px;
+    background: linear-gradient(135deg, #080808 0%, #0f0f0f 50%, #080808 100%);
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #141414;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(93,214,44,0.04) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212,168,67,0.03) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover-version {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #333;
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+  }
+  .cover h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 56px;
+    font-weight: 900;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .cover h1 .green { color: var(--tap-green); }
+  .cover h1 .gold { color: var(--ss-gold); }
+  .cover .sub {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    color: #444;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+  }
+  .cover-date {
+    position: absolute;
+    bottom: 40px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #222;
+    letter-spacing: 1px;
+  }
+
+  /* ===== COLOR SWATCHES ===== */
+  .color-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .swatch {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #111;
+    border: 1px solid #1a1a1a;
+  }
+  .swatch-preview {
+    height: 88px;
+    position: relative;
+  }
+  .swatch-info {
+    padding: 12px 14px;
+  }
+  .swatch-hex {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: #ddd;
+  }
+  .swatch-name {
+    font-size: 11px;
+    color: #555;
+    margin-top: 2px;
+  }
+  .swatch-role {
+    font-size: 10px;
+    color: #333;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ===== TYPOGRAPHY SPECIMENS ===== */
+  .type-card {
+    background: #111;
+    border: 1px solid #1a1a1a;
+    border-radius: 16px;
+    padding: 36px 40px;
+    margin-bottom: 16px;
+  }
+  .type-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #444;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .type-specs {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #333;
+    margin-top: 16px;
+    line-height: 1.8;
+  }
+  .type-specs span {
+    color: #555;
+  }
+
+  /* ===== FONT STACK TABLE ===== */
+  .font-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 32px;
+  }
+  .font-table th {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #444;
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .font-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #111;
+    font-size: 13px;
+    color: #888;
+    vertical-align: top;
+  }
+  .font-table td:first-child { color: #ccc; font-weight: 500; }
+  .font-table .mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #555;
+  }
+
+  /* ===== DESIGN ELEMENTS ===== */
+  .elements-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  .element-card {
+    background: #111;
+    border: 1px solid #1a1a1a;
+    border-radius: 12px;
+    padding: 28px;
+    min-height: 180px;
+  }
+  .element-card h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .element-card p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.7;
+  }
+
+  /* ===== BUTTON SPECIMENS ===== */
+  .btn-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-tap-primary {
+    background: var(--tap-green);
+    color: #000;
+  }
+  .btn-tap-outline {
+    background: transparent;
+    border-color: var(--tap-green);
+    color: var(--tap-green);
+  }
+  .btn-tap-ghost {
+    background: transparent;
+    border-color: #333;
+    color: #888;
+  }
+  .btn-ss-primary {
+    background: var(--ss-gold);
+    color: #0D1B2A;
+  }
+  .btn-ss-outline {
+    background: transparent;
+    border-color: var(--ss-gold);
+    color: var(--ss-gold);
+  }
+  .btn-ss-warm {
+    background: var(--ss-cream);
+    color: var(--ss-navy-deep);
+  }
+
+  /* ===== DO/DON'T RULES ===== */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  .rule-card {
+    background: #111;
+    border: 1px solid #1a1a1a;
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .rule-card.do { border-left: 3px solid var(--tap-green); }
+  .rule-card.dont { border-left: 3px solid #ff4444; }
+  .rule-card h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .rule-card.do h4 { color: var(--tap-green); }
+  .rule-card.dont h4 { color: #ff4444; }
+  .rule-card ul { list-style: none; padding: 0; }
+  .rule-card li {
+    font-size: 13px;
+    color: #888;
+    padding: 5px 0 5px 18px;
+    position: relative;
+  }
+  .rule-card.do li::before { content: '✓'; position: absolute; left: 0; color: var(--tap-green); font-size: 12px; }
+  .rule-card.dont li::before { content: '✕'; position: absolute; left: 0; color: #ff4444; font-size: 12px; }
+
+  /* ===== SPACING/SIZING REFERENCE ===== */
+  .spacing-row {
+    display: flex;
+    gap: 24px;
+    align-items: flex-end;
+    margin-bottom: 24px;
+  }
+  .spacing-block {
+    text-align: center;
+  }
+  .spacing-box {
+    background: rgba(93,214,44,0.15);
+    border: 1px solid rgba(93,214,44,0.3);
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .spacing-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #555;
+  }
+
+  /* ===== ICON STYLE ===== */
+  .icon-grid {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 24px;
+  }
+  .icon-demo {
+    width: 64px;
+    height: 64px;
+    border: 1.5px solid;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+  .icon-demo.tap { border-color: var(--tap-green); color: var(--tap-green); }
+  .icon-demo.ss { border-color: var(--ss-gold); color: var(--ss-gold); }
+
+  /* ===== SUBSECTION ===== */
+  .subsection {
+    margin-bottom: 48px;
+  }
+  .subsection h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--tap-green);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .subsection h3.gold { color: var(--ss-gold); }
+
+  /* ===== IMAGERY SECTION ===== */
+  .imagery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .imagery-card {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    height: 180px;
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+  }
+  .imagery-card span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(0,0,0,0.6);
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+
+  /* ===== DIVIDER ===== */
+  .brand-divider {
+    height: 4px;
+    background: linear-gradient(90deg, var(--tap-green) 0%, var(--tap-green) 50%, var(--ss-gold) 50%, var(--ss-gold) 100%);
+    margin: 0;
+  }
+
+  /* ===== QUICK REF TABLE ===== */
+  .ref-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .ref-card {
+    background: #111;
+    border: 1px solid #1a1a1a;
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .ref-card h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .ref-card.tap h4 { color: var(--tap-green); }
+  .ref-card.ss h4 { color: var(--ss-gold); }
+  .ref-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #151515;
+    font-size: 13px;
+  }
+  .ref-item:last-child { border-bottom: none; }
+  .ref-item .key { color: #666; }
+  .ref-item .val { color: #aaa; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="topnav">
+  <div class="topnav-brand">Brand Kit</div>
+  <div class="topnav-links">
+    <a href="#tap-colors" class="active">TAP Colors</a>
+    <a href="#ss-colors">SS Colors</a>
+    <a href="#typography">Typography</a>
+    <a href="#buttons">Buttons</a>
+    <a href="#elements">Elements</a>
+    <a href="#rules">Rules</a>
+    <a href="#quickref">Quick Ref</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- ===== COVER ===== -->
+<div class="cover">
+  <div class="cover-version">v2.0 — MARCH 2026</div>
+  <h1>BRAND <span class="green">KIT</span></h1>
+  <div class="sub">Tommy Arnold Productions &amp; ScoreSchool</div>
+  <div class="cover-date">Prepared March 26, 2026 — Confidential</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!--  SECTION 1: TAP COLOR PALETTE                         -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="section" id="tap-colors">
+  <div class="section-label">01 — PALETTE</div>
+  <h2>Tommy Arnold Productions</h2>
+  <p class="lead">Dark, cinematic, atmospheric. Inspired by Spitfire Audio's premium aesthetic — deep blacks with electric green accents and horror reds.</p>
+
+  <div class="subsection">
+    <h3>Primary Colors</h3>
+    <div class="color-row">
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #0F0F0F;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#0F0F0F</div>
+          <div class="swatch-name">Void Black</div>
+          <div class="swatch-role">Primary background</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #1A1A1A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#1A1A1A</div>
+          <div class="swatch-name">Surface</div>
+          <div class="swatch-role">Cards, elevated bg</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #202020;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#202020</div>
+          <div class="swatch-name">Slate</div>
+          <div class="swatch-role">Containers, panels</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #5DD62C;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#5DD62C</div>
+          <div class="swatch-name">Electric Green</div>
+          <div class="swatch-role">Primary accent</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #F8F8F8;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#F8F8F8</div>
+          <div class="swatch-name">Ice White</div>
+          <div class="swatch-role">Headlines, primary text</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3>Secondary / Mood Colors</h3>
+    <div class="color-row">
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #337418;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#337418</div>
+          <div class="swatch-name">Deep Green</div>
+          <div class="swatch-role">Hover states, depth</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #4AE01E;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#4AE01E</div>
+          <div class="swatch-name">Glow Green</div>
+          <div class="swatch-role">Highlights, glow effects</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #8B0000;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#8B0000</div>
+          <div class="swatch-name">Blood Red</div>
+          <div class="swatch-role">Horror accent, danger</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #B91C1C;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#B91C1C</div>
+          <div class="swatch-name">Crimson</div>
+          <div class="swatch-role">Active horror accent</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #C8B560;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#C8B560</div>
+          <div class="swatch-name">Antique Gold</div>
+          <div class="swatch-role">Premium, prestige</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #3D4A35;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#3D4A35</div>
+          <div class="swatch-name">Decay</div>
+          <div class="swatch-role">Muted green bg</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3>Text &amp; UI Grays</h3>
+    <div class="color-row">
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #F8F8F8;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#F8F8F8</div>
+          <div class="swatch-name">Primary Text</div>
+          <div class="swatch-role">Headlines</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #CCCCCC;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#CCCCCC</div>
+          <div class="swatch-name">Body Text</div>
+          <div class="swatch-role">Paragraphs</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #888888;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#888888</div>
+          <div class="swatch-name">Muted</div>
+          <div class="swatch-role">Captions, metadata</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #444444;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#444444</div>
+          <div class="swatch-name">Subtle</div>
+          <div class="swatch-role">Placeholders, borders</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #222222;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#222222</div>
+          <div class="swatch-name">Divider</div>
+          <div class="swatch-role">Lines, separators</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!--  SECTION 2: SCORESCHOOL COLOR PALETTE                 -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="section" id="ss-colors">
+  <div class="section-label gold">02 — PALETTE</div>
+  <h2 style="color: var(--ss-gold);">ScoreSchool</h2>
+  <p class="lead">Warm, educational, credible. Inspired by Spitfire's Mercury line and Crow Hill's maker energy — deep navys with warm gold and cream tones.</p>
+
+  <div class="subsection">
+    <h3 class="gold">Primary Colors</h3>
+    <div class="color-row">
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #0D1B2A;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#0D1B2A</div>
+          <div class="swatch-name">Deep Navy</div>
+          <div class="swatch-role">Primary background</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #1B2D45;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#1B2D45</div>
+          <div class="swatch-name">Navy</div>
+          <div class="swatch-role">Cards, surfaces</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #2C3E50;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#2C3E50</div>
+          <div class="swatch-name">Storm</div>
+          <div class="swatch-role">Containers, panels</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #D4A843;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#D4A843</div>
+          <div class="swatch-name">Studio Gold</div>
+          <div class="swatch-role">Primary accent</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #F5F0E8;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#F5F0E8</div>
+          <div class="swatch-name">Warm Cream</div>
+          <div class="swatch-role">Headlines, primary text</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="gold">Secondary / Accent Colors</h3>
+    <div class="color-row">
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #E8D5A3;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#E8D5A3</div>
+          <div class="swatch-name">Soft Gold</div>
+          <div class="swatch-role">Hover states, highlights</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #C8E632;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#C8E632</div>
+          <div class="swatch-name">Chartreuse</div>
+          <div class="swatch-role">Energy accent (Crow Hill inspired)</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #C8C0B4;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#C8C0B4</div>
+          <div class="swatch-name">Parchment</div>
+          <div class="swatch-role">Body text</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #4A6FA5;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#4A6FA5</div>
+          <div class="swatch-name">Steel Blue</div>
+          <div class="swatch-role">Links, interactive</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-preview" style="background: #2D5016;"></div>
+        <div class="swatch-info">
+          <div class="swatch-hex">#2D5016</div>
+          <div class="swatch-name">Forest</div>
+          <div class="swatch-role">Success states</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="brand-divider"></div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!--  SECTION 3: TYPOGRAPHY                                -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="section" id="typography">
+  <div class="section-label">03 — TYPOGRAPHY</div>
+  <h2>Font System</h2>
+  <p class="lead">A four-font stack shared across both brands, with different weight and treatment rules for each. All fonts are free via Google Fonts.</p>
+
+  <!-- FONT STACK TABLE -->
+  <table class="font-table">
+    <thead>
+      <tr>
+        <th>Font</th>
+        <th>Role</th>
+        <th>Weights Used</th>
+        <th>Source</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Montserrat</td>
+        <td>Headlines, navigation, labels</td>
+        <td class="mono">700, 800, 900</td>
+        <td class="mono">Google Fonts (free)</td>
+      </tr>
+      <tr>
+        <td>Raleway</td>
+        <td>Subtitles, taglines, elegant text</td>
+        <td class="mono">200, 300, 400, 500</td>
+        <td class="mono">Google Fonts (free)</td>
+      </tr>
+      <tr>
+        <td>Inter</td>
+        <td>Body text, UI elements, paragraphs</td>
+        <td class="mono">300, 400, 500, 600</td>
+        <td class="mono">Google Fonts (free)</td>
+      </tr>
+      <tr>
+        <td>JetBrains Mono</td>
+        <td>Technical specs, code, metadata</td>
+        <td class="mono">400, 500</td>
+        <td class="mono">Google Fonts (free)</td>
+      </tr>
+      <tr>
+        <td>DM Sans</td>
+        <td>ScoreSchool alternate body (warmer)</td>
+        <td class="mono">400, 500, 600, 700</td>
+        <td class="mono">Google Fonts (free)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- TAP TYPOGRAPHY -->
+  <div class="subsection">
+    <h3>TAP Typography Specimens</h3>
+
+    <div class="type-card">
+      <div class="type-label">DISPLAY / HERO HEADLINE</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-size: 56px; font-weight: 900; letter-spacing: 8px; text-transform: uppercase; color: #fff; line-height: 1.1;">
+        SCORING THE<br>DARKNESS
+      </div>
+      <div class="type-specs">
+        <span>Montserrat 900</span> · 48–72px · Letter-spacing: 6–8px · Uppercase · Color: #F8F8F8
+      </div>
+    </div>
+
+    <div class="type-card">
+      <div class="type-label">SECTION HEADLINE</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: #fff;">
+        FILM SCORING PORTFOLIO
+      </div>
+      <div class="type-specs">
+        <span>Montserrat 800</span> · 28–36px · Letter-spacing: 3–4px · Uppercase · Color: #FFFFFF
+      </div>
+    </div>
+
+    <div class="type-card">
+      <div class="type-label">SUBTITLE / TAGLINE</div>
+      <div style="font-family: 'Raleway', sans-serif; font-size: 18px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #666;">
+        Horror · Suspense · Psychological Thriller
+      </div>
+      <div class="type-specs">
+        <span>Raleway 300</span> · 16–20px · Letter-spacing: 3–6px · Uppercase · Color: #666666
+      </div>
+    </div>
+
+    <div class="type-card">
+      <div class="type-label">BODY TEXT</div>
+      <div style="font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 400; color: #ccc; line-height: 1.7; max-width: 640px;">
+        Tommy Arnold is a Berklee-trained composer specializing in horror, suspense, and psychological thriller scores. His work has premiered at Indie Memphis and spans feature films, short films, and library music.
+      </div>
+      <div class="type-specs">
+        <span>Inter 400</span> · 14–16px · Line-height: 1.65–1.7 · Color: #CCCCCC
+      </div>
+    </div>
+
+    <div class="type-card">
+      <div class="type-label">LABEL / NAV / CTA</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--tap-green);">
+        View Reel &rarr;&nbsp;&nbsp;&nbsp;&nbsp;Book a Call&nbsp;&nbsp;&nbsp;&nbsp;Listen Now
+      </div>
+      <div class="type-specs">
+        <span>Montserrat 700</span> · 11–13px · Letter-spacing: 2–3px · Uppercase · Color: #5DD62C
+      </div>
+    </div>
+
+    <div class="type-card">
+      <div class="type-label">TECHNICAL / METADATA</div>
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 400; color: #555; letter-spacing: 1px;">
+        Genre: Horror/Suspense &nbsp;|&nbsp; Runtime: 94min &nbsp;|&nbsp; Format: 5.1 Surround &nbsp;|&nbsp; DAW: Logic Pro
+      </div>
+      <div class="type-specs">
+        <span>JetBrains Mono 400</span> · 11–13px · Letter-spacing: 1px · Color: #555555
+      </div>
+    </div>
+  </div>
+
+  <!-- SCORESCHOOL TYPOGRAPHY -->
+  <div class="subsection">
+    <h3 class="gold">ScoreSchool Typography Specimens</h3>
+
+    <div class="type-card" style="background: var(--ss-navy-deep); border-color: #1B2D45;">
+      <div class="type-label" style="color: var(--ss-gold);">DISPLAY / HERO HEADLINE</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-size: 48px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: var(--ss-cream); line-height: 1.15;">
+        SCORE YOUR<br>FIRST SCENE
+      </div>
+      <div class="type-specs">
+        <span style="color: var(--ss-gold);">Montserrat 800</span> · 40–56px · Letter-spacing: 2–4px · Uppercase · Color: #F5F0E8
+      </div>
+    </div>
+
+    <div class="type-card" style="background: var(--ss-navy-deep); border-color: #1B2D45;">
+      <div class="type-label" style="color: var(--ss-gold);">SECTION HEADLINE</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: 1px; color: var(--ss-cream);">
+        Module 3: Building Tension with Strings
+      </div>
+      <div class="type-specs">
+        <span style="color: var(--ss-gold);">Montserrat 700</span> · 24–32px · Letter-spacing: 0–2px · Title case OK · Color: #F5F0E8
+      </div>
+    </div>
+
+    <div class="type-card" style="background: var(--ss-navy-deep); border-color: #1B2D45;">
+      <div class="type-label" style="color: var(--ss-gold);">SUBTITLE / TAGLINE</div>
+      <div style="font-family: 'Raleway', sans-serif; font-size: 18px; font-weight: 400; letter-spacing: 2px; color: var(--ss-gold);">
+        Learn Film Scoring from a Working Composer
+      </div>
+      <div class="type-specs">
+        <span style="color: var(--ss-gold);">Raleway 400</span> · 16–20px · Letter-spacing: 1–3px · Title Case · Color: #D4A843
+      </div>
+    </div>
+
+    <div class="type-card" style="background: var(--ss-navy-deep); border-color: #1B2D45;">
+      <div class="type-label" style="color: var(--ss-gold);">BODY TEXT</div>
+      <div style="font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 400; color: var(--ss-text); line-height: 1.7; max-width: 640px;">
+        In this module, you'll learn how to spot-sync your music to picture, work with a click track, and understand the emotional timing that separates amateur scores from professional ones. We'll break it down step by step.
+      </div>
+      <div class="type-specs">
+        <span style="color: var(--ss-gold);">DM Sans 400</span> · 15–17px · Line-height: 1.7 · Color: #C8C0B4 — warmer, more approachable than Inter
+      </div>
+    </div>
+
+    <div class="type-card" style="background: var(--ss-navy-deep); border-color: #1B2D45;">
+      <div class="type-label" style="color: var(--ss-gold);">CTA / BUTTON LABEL</div>
+      <div style="font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ss-gold);">
+        Start Learning &rarr;&nbsp;&nbsp;&nbsp;&nbsp;Get Early Access&nbsp;&nbsp;&nbsp;&nbsp;Watch Preview
+      </div>
+      <div class="type-specs">
+        <span style="color: var(--ss-gold);">Montserrat 700</span> · 12–14px · Letter-spacing: 1–2px · Uppercase · Color: #D4A843
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!--  SECTION 4: BUTTONS & UI ELEMENTS                     -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="section" id="buttons">
+  <div class="section-label">04 — UI ELEMENTS</div>
+  <h2>Buttons &amp; Components</h2>
+  <p class="lead">Button styles, border radius, and interactive element patterns for both brands.</p>
+
+  <div class="subsection">
+    <h3>TAP Buttons</h3>
+    <div class="btn-row">
+      <div class="btn btn-tap-primary">View Reel</div>
+      <div class="btn btn-tap-outline">Book a Call</div>
+      <div class="btn btn-tap-ghost">Learn More</div>
+    </div>
+    <div class="type-specs" style="margin-top: 8px;">
+      Border-radius: 6px · Font: Montserrat 700 · Size: 12px · Letter-spacing: 2px · Uppercase<br>
+      Primary: bg #5DD62C, text #000 · Outline: border #5DD62C, text #5DD62C · Ghost: border #333, text #888
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="gold">ScoreSchool Buttons</h3>
+    <div class="btn-row">
+      <div class="btn btn-ss-primary">Start Learning</div>
+      <div class="btn btn-ss-outline">Watch Preview</div>
+      <div class="btn btn-ss-warm">Get Early Access</div>
+    </div>
+    <div class="type-specs" style="margin-top: 8px;">
+      Border-radius: 8px · Font: Montserrat 700 · Size: 12px · Letter-spacing: 1.5px · Uppercase<br>
+      Primary: bg #D4A843, text #0D1B2A · Outline: border #D4A843, text #D4A843 · Warm: bg #F5F0E8, text #0D1B2A
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3>Spacing Scale</h3>
+    <div class="spacing-row">
+      <div class="spacing-block">
+        <div class="spacing-box" style="width: 8px; height: 8px;"></div>
+        <div class="spacing-label">4px</div>
+      </div>
+      <div class="spacing-block">
+        <div class="spacing-box" style="width: 16px; height: 16px;"></div>
+        <div class="spacing-label">8px</div>
+      </div>
+      <div class="spacing-block">
+        <div class="spacing-box" style="width: 24px; height: 24px;"></div>
+        <div class="spacing-label">12px</div>
+      </div>
+      <div class="spacing-block">
+        <div class="spacing-box" style="width: 32px; height: 32px;"></div>
+        <div class="spacing-label">16px</div>
+      </div>
+      <div class="spacing-block">
+        <div class="spacing-box" style="width: 48px; height: 48px;"></div>
+        <div class="spacing-label">24px</div>
+      </div>
+      <div class="spacing-block">
+        <div class="spacing-box" style="width: 64px; height: 64px;"></div>
+        <div class="spacing-label">32px</div>
+      </div>
+      <div class="spacing-block">
+        <div class="spacing-box" style="width: 96px; height: 48px;"></div>
+        <div class="spacing-label">48px</div>
+      </div>
+      <div class="spacing-block">
+        <div class="spacing-box" style="width: 128px; height: 48px;"></div>
+        <div class="spacing-label">64px</div>
+      </div>
+      <div class="spacing-block">
+        <div class="spacing-box" style="width: 160px; height: 48px;"></div>
+        <div class="spacing-label">80px</div>
+      </div>
+    </div>
+    <div class="type-specs">
+      Base unit: 4px · Scale: 4, 8, 12, 16, 24, 32, 48, 64, 80 · Use multiples of 4 for all spacing
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3>Border Radius</h3>
+    <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 16px;">
+      <div style="width: 80px; height: 60px; background: #1a1a1a; border: 1px solid #333; border-radius: 0px; display: flex; align-items: center; justify-content: center;">
+        <span class="spacing-label">0px</span>
+      </div>
+      <div style="width: 80px; height: 60px; background: #1a1a1a; border: 1px solid #333; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+        <span class="spacing-label">4px</span>
+      </div>
+      <div style="width: 80px; height: 60px; background: #1a1a1a; border: 1px solid #333; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+        <span class="spacing-label">8px</span>
+      </div>
+      <div style="width: 80px; height: 60px; background: #1a1a1a; border: 1px solid #333; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+        <span class="spacing-label">12px</span>
+      </div>
+      <div style="width: 80px; height: 60px; background: #1a1a1a; border: 1px solid #333; border-radius: 100px; display: flex; align-items: center; justify-content: center;">
+        <span class="spacing-label">pill</span>
+      </div>
+    </div>
+    <div class="type-specs">
+      TAP: 6px buttons, 12px cards, 0px for cinematic full-bleed images<br>
+      ScoreSchool: 8px buttons, 12–16px cards, pill for tags/badges
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!--  SECTION 5: DESIGN ELEMENTS                           -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="section" id="elements">
+  <div class="section-label">05 — DESIGN ELEMENTS</div>
+  <h2>Visual Language</h2>
+  <p class="lead">Textures, imagery style, icon approach, and graphic elements that define each brand's visual identity.</p>
+
+  <div class="subsection">
+    <h3>TAP Visual Elements</h3>
+    <div class="elements-grid">
+      <div class="element-card">
+        <h4>Photography Style</h4>
+        <p>Dark, atmospheric close-ups. Instruments in shadow, dramatic lighting. Think Spitfire product shots — cinematic, moody, high contrast. Never bright or casual.</p>
+      </div>
+      <div class="element-card">
+        <h4>Graphic Textures</h4>
+        <p>Film grain overlays, waveform visualizations, audio spectrograms. Subtle noise textures on dark backgrounds. VHS/CRT scan lines for horror projects.</p>
+      </div>
+      <div class="element-card">
+        <h4>Icon Style</h4>
+        <p>Thin line icons (1.5px stroke), monochrome green or white on dark. No filled/solid icons. Musical notation, waveforms, film strip elements.</p>
+      </div>
+      <div class="element-card">
+        <h4>Layout Approach</h4>
+        <p>Full-bleed hero images, generous negative space, bold type overlaid on imagery. Grid-based with asymmetric compositions. Spitfire-style product pages.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="gold">ScoreSchool Visual Elements</h3>
+    <div class="elements-grid">
+      <div class="element-card" style="background: var(--ss-navy-deep); border-color: #1B2D45;">
+        <h4 style="color: var(--ss-gold);">Photography Style</h4>
+        <p>Warm, educational. Behind-the-scenes studio shots, DAW screenshots, hands on keyboards. Approachable but professional. Think Crow Hill's maker energy.</p>
+      </div>
+      <div class="element-card" style="background: var(--ss-navy-deep); border-color: #1B2D45;">
+        <h4 style="color: var(--ss-gold);">Graphic Textures</h4>
+        <p>Infographic-style diagrams (like Crow Hill cheat sheets), orchestration charts, waveform UI elements. Clean data visualization aesthetic on dark navy.</p>
+      </div>
+      <div class="element-card" style="background: var(--ss-navy-deep); border-color: #1B2D45;">
+        <h4 style="color: var(--ss-gold);">Icon Style</h4>
+        <p>Outlined icons with slightly thicker stroke (2px). Cream or gold on navy. Musical education symbols — treble clefs, piano keys, film reels, play buttons.</p>
+      </div>
+      <div class="element-card" style="background: var(--ss-navy-deep); border-color: #1B2D45;">
+        <h4 style="color: var(--ss-gold);">Layout Approach</h4>
+        <p>Card-based content organization. Module/lesson structure. Progress indicators. More structured grid than TAP. Generous padding, warm feel.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!--  SECTION 6: BRAND RULES                               -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="section" id="rules">
+  <div class="section-label">06 — BRAND RULES</div>
+  <h2>Do's &amp; Don'ts</h2>
+  <p class="lead">Key guidelines to maintain brand consistency across all touchpoints.</p>
+
+  <div class="subsection">
+    <h3>Tommy Arnold Productions</h3>
+    <div class="rules-grid">
+      <div class="rule-card do">
+        <h4>Do</h4>
+        <ul>
+          <li>Use ALL CAPS for headlines with wide letter-spacing</li>
+          <li>Default to dark backgrounds (#0F0F0F or #1A1A1A)</li>
+          <li>Use green (#5DD62C) sparingly as accent — never as background</li>
+          <li>Keep photography dark, atmospheric, and cinematic</li>
+          <li>Use generous negative space — let content breathe</li>
+          <li>Apply film grain or noise textures subtly</li>
+          <li>Link to ReelCrafter reel — never send additional samples</li>
+        </ul>
+      </div>
+      <div class="rule-card dont">
+        <h4>Don't</h4>
+        <ul>
+          <li>Use light/white backgrounds — ever</li>
+          <li>Mix too many accent colors in one piece</li>
+          <li>Use rounded, playful, or bubbly typefaces</li>
+          <li>Use stock photos with bright, corporate lighting</li>
+          <li>Center-align body text (left-align always)</li>
+          <li>Use emojis in professional outreach</li>
+          <li>Crowd layouts — if in doubt, remove elements</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="gold">ScoreSchool</h3>
+    <div class="rules-grid">
+      <div class="rule-card do">
+        <h4 style="color: var(--ss-gold);">Do</h4>
+        <ul>
+          <li>Use warm, inviting language — "you'll learn" not "students will"</li>
+          <li>Navy backgrounds with gold accents for premium feel</li>
+          <li>Title Case is OK for ScoreSchool (not just ALL CAPS)</li>
+          <li>Use infographic/diagram elements for educational content</li>
+          <li>Show real DAW screenshots and studio environments</li>
+          <li>Use DM Sans for body — warmer than Inter</li>
+          <li>Card-based layouts for course modules and lessons</li>
+        </ul>
+      </div>
+      <div class="rule-card dont">
+        <h4>Don't</h4>
+        <ul>
+          <li>Use horror/blood imagery on ScoreSchool content</li>
+          <li>Make it look too corporate or institutional</li>
+          <li>Use TAP's neon green — gold is ScoreSchool's accent</li>
+          <li>Overcomplicate layouts — clarity is key for education</li>
+          <li>Use jargon without explanation in student-facing content</li>
+          <li>Mix ScoreSchool and TAP branding on the same page</li>
+          <li>Use pure white (#FFF) — use warm cream (#F5F0E8) instead</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!--  SECTION 7: QUICK REFERENCE                           -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="section" id="quickref">
+  <div class="section-label">07 — QUICK REFERENCE</div>
+  <h2>Cheat Sheet</h2>
+  <p class="lead">Copy-paste values for Canva, CSS, Figma, and social templates.</p>
+
+  <div class="ref-grid">
+    <div class="ref-card tap">
+      <h4>TAP — Tommy Arnold Productions</h4>
+      <div class="ref-item"><span class="key">Primary BG</span><span class="val">#0F0F0F</span></div>
+      <div class="ref-item"><span class="key">Card BG</span><span class="val">#1A1A1A</span></div>
+      <div class="ref-item"><span class="key">Accent Green</span><span class="val">#5DD62C</span></div>
+      <div class="ref-item"><span class="key">Horror Red</span><span class="val">#8B0000</span></div>
+      <div class="ref-item"><span class="key">Gold</span><span class="val">#C8B560</span></div>
+      <div class="ref-item"><span class="key">Headline Text</span><span class="val">#F8F8F8</span></div>
+      <div class="ref-item"><span class="key">Body Text</span><span class="val">#CCCCCC</span></div>
+      <div class="ref-item"><span class="key">Muted Text</span><span class="val">#888888</span></div>
+      <div class="ref-item"><span class="key">Headline Font</span><span class="val">Montserrat 800-900</span></div>
+      <div class="ref-item"><span class="key">Subtitle Font</span><span class="val">Raleway 300</span></div>
+      <div class="ref-item"><span class="key">Body Font</span><span class="val">Inter 400</span></div>
+      <div class="ref-item"><span class="key">Mono Font</span><span class="val">JetBrains Mono 400</span></div>
+      <div class="ref-item"><span class="key">Headline Tracking</span><span class="val">6-8px / 400-600</span></div>
+      <div class="ref-item"><span class="key">Headline Case</span><span class="val">ALL CAPS always</span></div>
+      <div class="ref-item"><span class="key">Button Radius</span><span class="val">6px</span></div>
+      <div class="ref-item"><span class="key">Card Radius</span><span class="val">12px</span></div>
+      <div class="ref-item"><span class="key">Mood</span><span class="val">Dark, cinematic, bold</span></div>
+    </div>
+
+    <div class="ref-card ss">
+      <h4>ScoreSchool — Score Your First Scene</h4>
+      <div class="ref-item"><span class="key">Primary BG</span><span class="val">#0D1B2A</span></div>
+      <div class="ref-item"><span class="key">Card BG</span><span class="val">#1B2D45</span></div>
+      <div class="ref-item"><span class="key">Accent Gold</span><span class="val">#D4A843</span></div>
+      <div class="ref-item"><span class="key">Soft Gold</span><span class="val">#E8D5A3</span></div>
+      <div class="ref-item"><span class="key">Energy Accent</span><span class="val">#C8E632</span></div>
+      <div class="ref-item"><span class="key">Headline Text</span><span class="val">#F5F0E8</span></div>
+      <div class="ref-item"><span class="key">Body Text</span><span class="val">#C8C0B4</span></div>
+      <div class="ref-item"><span class="key">Link Blue</span><span class="val">#4A6FA5</span></div>
+      <div class="ref-item"><span class="key">Headline Font</span><span class="val">Montserrat 700-800</span></div>
+      <div class="ref-item"><span class="key">Subtitle Font</span><span class="val">Raleway 400</span></div>
+      <div class="ref-item"><span class="key">Body Font</span><span class="val">DM Sans 400</span></div>
+      <div class="ref-item"><span class="key">Mono Font</span><span class="val">JetBrains Mono 400</span></div>
+      <div class="ref-item"><span class="key">Headline Tracking</span><span class="val">2-4px / 100-300</span></div>
+      <div class="ref-item"><span class="key">Headline Case</span><span class="val">CAPS or Title Case</span></div>
+      <div class="ref-item"><span class="key">Button Radius</span><span class="val">8px</span></div>
+      <div class="ref-item"><span class="key">Card Radius</span><span class="val">12-16px</span></div>
+      <div class="ref-item"><span class="key">Mood</span><span class="val">Warm, educational, credible</span></div>
+    </div>
+  </div>
+
+  <!-- CANVA NOTES -->
+  <div style="margin-top: 48px;">
+    <div class="subsection">
+      <h3>Canva Setup Notes</h3>
+      <div class="elements-grid">
+        <div class="element-card">
+          <h4>TAP Brand Kit in Canva</h4>
+          <p>Add colors: #0F0F0F, #1A1A1A, #5DD62C, #8B0000, #C8B560, #F8F8F8. Upload Montserrat (use 800/900 weights). Set default background to #0F0F0F. Use "dark" templates as starting points.</p>
+        </div>
+        <div class="element-card">
+          <h4>ScoreSchool Brand Kit in Canva</h4>
+          <p>Add colors: #0D1B2A, #1B2D45, #D4A843, #E8D5A3, #F5F0E8. Upload Montserrat + DM Sans. Set default background to #0D1B2A. Use "dark blue" templates as starting points.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOCIAL MEDIA SPECS -->
+  <div style="margin-top: 16px;">
+    <div class="subsection">
+      <h3>Social Media Quick Specs</h3>
+      <table class="font-table">
+        <thead>
+          <tr>
+            <th>Platform</th>
+            <th>Format</th>
+            <th>Size</th>
+            <th>Brand Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>TikTok / Reels</td>
+            <td>Vertical video</td>
+            <td class="mono">1080 × 1920</td>
+            <td>TAP: Dark overlay + green text. SS: Navy overlay + gold text</td>
+          </tr>
+          <tr>
+            <td>Instagram Feed</td>
+            <td>Square / 4:5</td>
+            <td class="mono">1080 × 1080 / 1080 × 1350</td>
+            <td>TAP: #0F0F0F bg. SS: #0D1B2A bg</td>
+          </tr>
+          <tr>
+            <td>Instagram Story</td>
+            <td>Vertical</td>
+            <td class="mono">1080 × 1920</td>
+            <td>Same as TikTok templates</td>
+          </tr>
+          <tr>
+            <td>YouTube Thumbnail</td>
+            <td>Landscape</td>
+            <td class="mono">1280 × 720</td>
+            <td>Bold Montserrat headline, dark bg, accent color highlight</td>
+          </tr>
+          <tr>
+            <td>Email Header</td>
+            <td>Landscape</td>
+            <td class="mono">600 × 200</td>
+            <td>Match brand bg + accent. Keep text minimal</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="padding: 48px 60px; text-align: center; border-top: 1px solid #141414;">
+  <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #333; letter-spacing: 1px;">
+    Tommy Arnold Productions & ScoreSchool — Brand Kit v2.0 — March 2026
+  </div>
+</div>
+
+</div><!-- end .main -->
+</body>
+</html>

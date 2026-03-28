@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tommy Arnold — Brand Analysis & Mood Board</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Raleway:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a0a;
+    color: #e8e8e8;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+  /* HEADER */
+  .hero {
+    padding: 80px 0 60px;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #5DD62C;
+    margin-bottom: 8px;
+  }
+  .hero .subtitle {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    color: #888;
+    font-weight: 300;
+    letter-spacing: 2px;
+  }
+  .hero .date {
+    margin-top: 16px;
+    font-size: 13px;
+    color: #555;
+    letter-spacing: 1px;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 60px 0;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .section-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #5DD62C;
+    margin-bottom: 12px;
+  }
+  .section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 24px;
+  }
+  .section p {
+    color: #aaa;
+    font-size: 15px;
+    max-width: 800px;
+    margin-bottom: 16px;
+  }
+
+  /* CURRENT WEBSITE AUDIT */
+  .audit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .audit-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .audit-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  .audit-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .audit-card li {
+    padding: 8px 0;
+    border-bottom: 1px solid #1a1a1a;
+    font-size: 14px;
+    color: #999;
+  }
+  .audit-card li:last-child { border-bottom: none; }
+  .tag-good {
+    display: inline-block;
+    background: rgba(93, 214, 44, 0.15);
+    color: #5DD62C;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+  }
+  .tag-improve {
+    display: inline-block;
+    background: rgba(255, 170, 0, 0.15);
+    color: #ffaa00;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+  }
+  .tag-rethink {
+    display: inline-block;
+    background: rgba(255, 70, 70, 0.15);
+    color: #ff5555;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+  }
+
+  /* COLOR PALETTE */
+  .palette-section { margin-top: 40px; }
+  .palette-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  .palette-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 12px;
+  }
+  .swatch {
+    width: 120px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #111;
+    border: 1px solid #222;
+  }
+  .swatch-color {
+    height: 80px;
+    width: 100%;
+  }
+  .swatch-info {
+    padding: 10px 12px;
+  }
+  .swatch-info .hex {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #ccc;
+    letter-spacing: 1px;
+  }
+  .swatch-info .name {
+    font-size: 11px;
+    color: #666;
+    margin-top: 2px;
+  }
+
+  /* INSPIRATION THEMES */
+  .theme-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-top: 32px;
+  }
+  .theme-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 28px;
+    transition: border-color 0.2s;
+  }
+  .theme-card:hover { border-color: #5DD62C; }
+  .theme-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .theme-card .source {
+    font-size: 12px;
+    color: #5DD62C;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .theme-card p {
+    font-size: 13px;
+    color: #888;
+    line-height: 1.6;
+  }
+  .theme-card .takeaway {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid #222;
+    font-size: 12px;
+    color: #5DD62C;
+    font-weight: 500;
+  }
+
+  /* TYPOGRAPHY SECTION */
+  .type-showcase {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .type-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 32px;
+  }
+  .type-card .brand-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .type-card.tap .brand-label { color: #5DD62C; }
+  .type-card.ss .brand-label { color: #D4A843; }
+
+  .type-sample {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .type-sample:last-child { border-bottom: none; }
+  .type-sample .role {
+    font-size: 11px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .type-sample .demo-montserrat-hero {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .type-sample .demo-montserrat-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #ccc;
+  }
+  .type-sample .demo-inter-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #999;
+    line-height: 1.7;
+  }
+  .type-sample .demo-raleway-hero {
+    font-family: 'Raleway', sans-serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+  .type-sample .demo-raleway-sub {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #D4A843;
+  }
+  .type-sample .demo-raleway-body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #999;
+    line-height: 1.7;
+  }
+  .type-note {
+    font-size: 12px;
+    color: #555;
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+  /* RECOMMENDATIONS */
+  .rec-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .rec-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .rec-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .rec-card .rec-brand {
+    font-size: 11px;
+    color: #5DD62C;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .rec-card p {
+    font-size: 13px;
+    color: #888;
+    line-height: 1.6;
+  }
+  .priority-high {
+    display: inline-block;
+    background: rgba(255, 70, 70, 0.15);
+    color: #ff5555;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-left: 8px;
+  }
+  .priority-med {
+    display: inline-block;
+    background: rgba(255, 170, 0, 0.15);
+    color: #ffaa00;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-left: 8px;
+  }
+
+  /* NEXT STEPS */
+  .steps-list {
+    margin-top: 24px;
+    counter-reset: step;
+  }
+  .step-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 20px 0;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .step-number {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #222;
+    min-width: 50px;
+  }
+  .step-content h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .step-content p {
+    font-size: 14px;
+    color: #888;
+  }
+
+  /* VS COMPARISON */
+  .vs-container {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 0;
+    align-items: center;
+    margin-top: 32px;
+  }
+  .vs-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+  }
+  .vs-divider {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    color: #333;
+    letter-spacing: 2px;
+  }
+  .vs-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .vs-card.tap-side h3 { color: #5DD62C; }
+  .vs-card.ss-side h3 { color: #D4A843; }
+  .vs-card .mood-words {
+    font-size: 14px;
+    color: #777;
+    line-height: 2;
+  }
+  .vs-card .mood-words span {
+    display: inline-block;
+    background: #1a1a1a;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin: 3px;
+    font-size: 12px;
+    color: #aaa;
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 40px 0;
+    text-align: center;
+    font-size: 12px;
+    color: #333;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="hero">
+    <h1>Brand Analysis</h1>
+    <div class="subtitle">Website Audit + Inspiration Review + Design Direction</div>
+    <div class="date">Tommy Arnold Productions & ScoreSchool — March 24, 2026</div>
+  </div>
+
+  <!-- SECTION 1: CURRENT WEBSITE AUDIT -->
+  <div class="section">
+    <div class="section-label">01 — Current State</div>
+    <h2>Website Audit: tommyarnoldmusic.com</h2>
+    <p>Your current Squarespace site has a solid foundation — dark aesthetic, neon green accents, and clear navigation. Here's what's working and what your inspiration folder tells me you want to evolve toward.</p>
+
+    <div class="audit-grid">
+      <div class="audit-card">
+        <h3>What's Working</h3>
+        <ul>
+          <li>Dark background — on brand, matches your TAP identity <span class="tag-good">KEEP</span></li>
+          <li>Neon green accent (#5DD62C) — distinctive and memorable <span class="tag-good">KEEP</span></li>
+          <li>"//" logo mark — clean, modern, recognizable <span class="tag-good">KEEP</span></li>
+          <li>Social icons in header — easy access to all platforms <span class="tag-good">KEEP</span></li>
+          <li>Testimonials section with photos — builds trust <span class="tag-good">KEEP</span></li>
+          <li>Audio player with track list — lets the work speak <span class="tag-good">KEEP</span></li>
+        </ul>
+      </div>
+      <div class="audit-card">
+        <h3>Opportunities to Level Up</h3>
+        <ul>
+          <li>Hero section feels empty — large black void above the fold <span class="tag-improve">ELEVATE</span></li>
+          <li>Typography lacks hierarchy — headings and body feel similar weight <span class="tag-improve">ELEVATE</span></li>
+          <li>No clear CTA on homepage — what should a director DO? <span class="tag-rethink">RETHINK</span></li>
+          <li>ScoreSchool lives as a "Store" link — no distinct brand presence <span class="tag-rethink">RETHINK</span></li>
+          <li>Services page is text-heavy — could use more visual storytelling <span class="tag-improve">ELEVATE</span></li>
+          <li>Copyright still says 2025 <span class="tag-improve">UPDATE</span></li>
+          <li>"TOMMY ARNOLD" name treatment could be bolder/wider-spaced <span class="tag-improve">ELEVATE</span></li>
+          <li>No video reel embedded above the fold <span class="tag-rethink">RETHINK</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: BRAND COMPARISON -->
+  <div class="section">
+    <div class="section-label">02 — Two Brands, One Ecosystem</div>
+    <h2>Tommy Arnold Productions vs. ScoreSchool</h2>
+    <p>Your inspiration folder confirms what your CLAUDE.md already outlines — these two brands need distinct visual identities that share a family resemblance without blending together.</p>
+
+    <div class="vs-container">
+      <div class="vs-card tap-side">
+        <h3>Tommy Arnold Productions</h3>
+        <div class="mood-words">
+          <span>Dark</span>
+          <span>Cinematic</span>
+          <span>Industrial</span>
+          <span>Atmospheric</span>
+          <span>Visceral</span>
+          <span>Confident</span>
+          <span>Neon Edge</span>
+          <span>Trent Reznor Energy</span>
+          <span>Premium</span>
+          <span>Dangerous</span>
+        </div>
+      </div>
+      <div class="vs-divider">VS</div>
+      <div class="vs-card ss-side">
+        <h3>ScoreSchool</h3>
+        <div class="mood-words">
+          <span>Warm</span>
+          <span>Approachable</span>
+          <span>Knowledgeable</span>
+          <span>Structured</span>
+          <span>Aspirational</span>
+          <span>Mentor Energy</span>
+          <span>No-Gatekeeping</span>
+          <span>Clean</span>
+          <span>Professional</span>
+          <span>Inviting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: INSPIRATION ANALYSIS -->
+  <div class="section">
+    <div class="section-label">03 — Inspiration Decoded</div>
+    <h2>What Your Mood Folder Tells Me</h2>
+    <p>I grouped your 28 inspiration images into clear themes. Each theme reveals a design principle you're drawn to — and how we can apply it across both brands.</p>
+
+    <div class="theme-grid">
+
+      <div class="theme-card">
+        <h3>Spitfire Audio — Premium Product Design</h3>
+        <div class="source">7 images — Scoring Essentials, Studio Brass, Mercury, Jupiter, Shop Grid</div>
+        <p>Dark backgrounds with cinematic product photography. Ultra-wide letter-spaced typography. Elegant icons and waveform visualizations. The gold standard for how a music brand can feel premium without feeling corporate.</p>
+        <div class="takeaway">→ Apply to: TAP website, product pages, course landing pages</div>
+      </div>
+
+      <div class="theme-card">
+        <h3>Crow Hill — Indie Music Brand Energy</h3>
+        <div class="source">3 images — Crystal Pianos, String Programming, MIDI's Dirty Little Secret</div>
+        <p>Bold serif logo with editorial personality. Mixes dark cinematic hero sections with lighter product/shop pages. Notably uses neon yellow-green on dark backgrounds — very close to your TAP palette. Content-forward approach with strong educational storytelling.</p>
+        <div class="takeaway">→ Apply to: ScoreSchool product pages, educational content layout</div>
+      </div>
+
+      <div class="theme-card">
+        <h3>Nine Inch Nails — Raw Texture & Mood</h3>
+        <div class="source">4 images — The Downward Spiral, Redux, Reaps001, With Teeth</div>
+        <p>Industrial distressed textures. Glitch artifacts. Muted greens and sepia tones. Silhouette figures in fog. This is the emotional core of your TAP brand — the feeling your music evokes translated into visual language.</p>
+        <div class="takeaway">→ Apply to: TAP brand textures, album art, background elements, True Crime album</div>
+      </div>
+
+      <div class="theme-card">
+        <h3>Dark Web Design — Modern Minimalism</h3>
+        <div class="source">3 images — "Abstract" hero, Ghost Store, Pricing Cards</div>
+        <p>3D abstract forms on pure black. Ghost-like imagery with serif typography. Glassmorphism pricing cards. These show your taste for modern, high-end web design that feels intentional and spacious — every element earns its place.</p>
+        <div class="takeaway">→ Apply to: Website redesign, SYFS course sales page, pricing layouts</div>
+      </div>
+
+      <div class="theme-card">
+        <h3>Studio Aesthetic — Wave Remedy Studios</h3>
+        <div class="source">1 image — Black + Gold layout with service sections</div>
+        <p>Black and gold color scheme. Clean section breaks. Studio photography with warm lighting. Icon-based service breakdown. This is the professional studio-for-hire template that maps directly to your Services page needs.</p>
+        <div class="takeaway">→ Apply to: TAP Services page redesign, service cards</div>
+      </div>
+
+      <div class="theme-card">
+        <h3>Graphic Identity — Skull Logo + Poly Skull</h3>
+        <div class="source">2 images — Bold B&W skull mark, Low-poly geometric skull</div>
+        <p>High-contrast black and white logo mark. Geometric/low-poly 3D rendering. These suggest you're interested in a bolder, more iconic brand mark — something that could work as an avatar, favicon, and watermark across all content.</p>
+        <div class="takeaway">→ Apply to: Logo exploration, publishing company mark, favicon</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECTION 4: COLOR PALETTE -->
+  <div class="section">
+    <div class="section-label">04 — Color System</div>
+    <h2>Proposed Color Palettes</h2>
+    <p>Based on your existing colors (confirmed by the palette screenshot in your folder) and the inspiration patterns, here's a refined dual-brand color system.</p>
+
+    <div class="palette-section">
+      <div class="palette-label">Tommy Arnold Productions — Primary</div>
+      <div class="palette-row">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #0F0F0F;"></div>
+          <div class="swatch-info"><div class="hex">#0F0F0F</div><div class="name">Void Black</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #1A1A1A;"></div>
+          <div class="swatch-info"><div class="hex">#1A1A1A</div><div class="name">Surface</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #202020;"></div>
+          <div class="swatch-info"><div class="hex">#202020</div><div class="name">Card Dark</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #5DD62C;"></div>
+          <div class="swatch-info"><div class="hex">#5DD62C</div><div class="name">Neon Green</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #337418;"></div>
+          <div class="swatch-info"><div class="hex">#337418</div><div class="name">Deep Green</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #F8F8F8;"></div>
+          <div class="swatch-info"><div class="hex">#F8F8F8</div><div class="name">Off White</div></div>
+        </div>
+      </div>
+
+      <div class="palette-label">Tommy Arnold Productions — Extended (from inspiration)</div>
+      <div class="palette-row">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #2A2A2A;"></div>
+          <div class="swatch-info"><div class="hex">#2A2A2A</div><div class="name">Slate</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #4AE01E;"></div>
+          <div class="swatch-info"><div class="hex">#4AE01E</div><div class="name">Electric Green</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #8B0000;"></div>
+          <div class="swatch-info"><div class="hex">#8B0000</div><div class="name">Blood Red</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #666666;"></div>
+          <div class="swatch-info"><div class="hex">#666666</div><div class="name">Muted Gray</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #3d4a35;"></div>
+          <div class="swatch-info"><div class="hex">#3D4A35</div><div class="name">Decay Green</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #C8B560;"></div>
+          <div class="swatch-info"><div class="hex">#C8B560</div><div class="name">Tarnished Gold</div></div>
+        </div>
+      </div>
+
+      <div class="palette-label">ScoreSchool — Primary</div>
+      <div class="palette-row">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #0D1B2A;"></div>
+          <div class="swatch-info"><div class="hex">#0D1B2A</div><div class="name">Deep Navy</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #1B2D45;"></div>
+          <div class="swatch-info"><div class="hex">#1B2D45</div><div class="name">Navy Mid</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #D4A843;"></div>
+          <div class="swatch-info"><div class="hex">#D4A843</div><div class="name">Warm Gold</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #F5F0E8;"></div>
+          <div class="swatch-info"><div class="hex">#F5F0E8</div><div class="name">Warm White</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #E8D5A3;"></div>
+          <div class="swatch-info"><div class="hex">#E8D5A3</div><div class="name">Soft Gold</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #2C3E50;"></div>
+          <div class="swatch-info"><div class="hex">#2C3E50</div><div class="name">Storm Blue</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: TYPOGRAPHY -->
+  <div class="section">
+    <div class="section-label">05 — Typography System</div>
+    <h2>Font Pairings</h2>
+    <p>Your inspiration pulls toward wide-spaced, bold sans-serifs for TAP and warmer, more readable fonts for ScoreSchool. Here's a refined system using fonts available on Google Fonts (free) and Squarespace.</p>
+
+    <div class="type-showcase">
+      <div class="type-card tap">
+        <div class="brand-label">Tommy Arnold Productions</div>
+        <div class="type-sample">
+          <div class="role">Hero / Display</div>
+          <div class="demo-montserrat-hero">SCORES THAT</div>
+          <div class="demo-montserrat-hero" style="color: #5DD62C;">SERVE THE STORY</div>
+          <div class="type-note">Montserrat 800 • All Caps • Letter-spacing: 6px</div>
+        </div>
+        <div class="type-sample">
+          <div class="role">Subheading</div>
+          <div class="demo-montserrat-sub">CUSTOM FILM SCORES</div>
+          <div class="type-note">Montserrat 600 • All Caps • Letter-spacing: 3px</div>
+        </div>
+        <div class="type-sample">
+          <div class="role">Body Text</div>
+          <div class="demo-inter-body">Crafting immersive scores that blend symphonic and electronic elements to enhance storytelling. Every note serves the narrative.</div>
+          <div class="type-note">Inter 400 • Sentence case • 15px/1.7</div>
+        </div>
+      </div>
+
+      <div class="type-card ss">
+        <div class="brand-label">ScoreSchool</div>
+        <div class="type-sample">
+          <div class="role">Hero / Display</div>
+          <div class="demo-raleway-hero">Score Your First Scene</div>
+          <div class="type-note">Raleway 600 • Title Case • Letter-spacing: 1px</div>
+        </div>
+        <div class="type-sample">
+          <div class="role">Subheading</div>
+          <div class="demo-raleway-sub">Step-by-step process for aspiring composers</div>
+          <div class="type-note">Raleway 500 • Sentence case • Warm Gold accent</div>
+        </div>
+        <div class="type-sample">
+          <div class="role">Body Text</div>
+          <div class="demo-raleway-body">You don't need a degree to score your first film. You need a process. This course gives you exactly that — a real-world workflow built from experience.</div>
+          <div class="type-note">Raleway 400 • Sentence case • 15px/1.7</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: KEY DESIGN PATTERNS -->
+  <div class="section">
+    <div class="section-label">06 — Design Patterns from Your Inspiration</div>
+    <h2>Patterns to Adopt</h2>
+
+    <div class="rec-grid">
+      <div class="rec-card">
+        <h3>Wide Letter-Spaced Headlines <span class="priority-high">HIGH</span></h3>
+        <div class="rec-brand">TAP</div>
+        <p>Every Spitfire Audio page uses ultra-wide letter spacing on display type. Your current site has this partially — push it further. "TOMMY ARNOLD" should command the screen with 6-8px letter spacing, heavy weight, all caps.</p>
+      </div>
+
+      <div class="rec-card">
+        <h3>Full-Bleed Cinematic Hero <span class="priority-high">HIGH</span></h3>
+        <div class="rec-brand">TAP</div>
+        <p>Your "Abstract" screenshot and Spitfire product pages show the power of a cinematic hero that fills the viewport. Consider a dark atmospheric video loop or moody textured background instead of pure black void.</p>
+      </div>
+
+      <div class="rec-card">
+        <h3>Glassmorphism / Frosted Cards <span class="priority-med">MEDIUM</span></h3>
+        <div class="rec-brand">BOTH</div>
+        <p>Your pricing card screenshot uses frosted glass cards on dark backgrounds. This is a modern UI pattern that could elevate both your service cards (TAP) and course pricing (ScoreSchool).</p>
+      </div>
+
+      <div class="rec-card">
+        <h3>Textured Backgrounds <span class="priority-high">HIGH</span></h3>
+        <div class="rec-brand">TAP</div>
+        <p>NIN album art + British Drama Toolkit use distressed, smoky, glitch textures as backgrounds. Your testimonials section already has a subtle texture — extend this language across sections for depth and atmosphere.</p>
+      </div>
+
+      <div class="rec-card">
+        <h3>Gold + Black for Premium <span class="priority-med">MEDIUM</span></h3>
+        <div class="rec-brand">SCORESCHOOL</div>
+        <p>Wave Remedy Studios shows black + gold done right. ScoreSchool's navy + gold palette should lean into this premium educational feel — warm gold accents on deep navy, not yellow on light backgrounds.</p>
+      </div>
+
+      <div class="rec-card">
+        <h3>Icon-Based Service Sections <span class="priority-med">MEDIUM</span></h3>
+        <div class="rec-brand">TAP</div>
+        <p>Spitfire's Mercury page and Wave Remedy use clean line icons to break up service descriptions. Your Services page currently relies on stock-feeling photos — custom line icons would feel more intentional and premium.</p>
+      </div>
+
+      <div class="rec-card">
+        <h3>Product Grid Layout <span class="priority-med">MEDIUM</span></h3>
+        <div class="rec-brand">SCORESCHOOL</div>
+        <p>Spitfire's shop grid and Crow Hill's bundles page show how to display digital products as premium items with strong cover art, clear pricing, and add-to-cart actions. Apply this to your Payhip store or a Squarespace products page.</p>
+      </div>
+
+      <div class="rec-card">
+        <h3>Iconic Brand Mark / Skull Motif <span class="priority-med">MEDIUM</span></h3>
+        <div class="rec-brand">TAP / PUBLISHING CO</div>
+        <p>The skull logo and low-poly skull in your inspiration suggest interest in an iconic secondary mark. This could work as the publishing company logo, a favicon, or a content watermark. Worth exploring alongside your "//" mark.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: NEXT STEPS -->
+  <div class="section">
+    <div class="section-label">07 — Roadmap</div>
+    <h2>Suggested Next Steps</h2>
+    <p>Here's how I recommend we sequence this work, prioritized by business impact.</p>
+
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-number">01</div>
+        <div class="step-content">
+          <h3>Lock Down the Color & Font System</h3>
+          <p>Finalize exact hex codes and font pairings for both brands. Create a shared reference file we can use for everything going forward. This is today's conversation.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-number">02</div>
+        <div class="step-content">
+          <h3>Build the Brand Guidelines Document</h3>
+          <p>A single PDF or HTML kit with logos, colors, fonts, do's/don'ts, voice guidelines, and usage examples. Your north star for every piece of content.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-number">03</div>
+        <div class="step-content">
+          <h3>ScoreSchool Sales Page Design (SYFS Course)</h3>
+          <p>Highest revenue impact. Design the "Score Your First Scene" sales page using the new brand system. June 1 launch deadline. This needs to happen soon.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-number">04</div>
+        <div class="step-content">
+          <h3>TAP Website Refresh</h3>
+          <p>Apply the elevated design patterns to tommyarnoldmusic.com — new hero section, tighter typography, textured backgrounds, clearer CTAs. Directors are landing here from your pitches.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-number">05</div>
+        <div class="step-content">
+          <h3>Marketing Asset Templates</h3>
+          <p>Social media templates (TikTok-first), email headers, thumbnail templates — all branded for both TAP and ScoreSchool. Batch-create in Canva or as reusable designs.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-number">06</div>
+        <div class="step-content">
+          <h3>Publishing Company Brand Identity</h3>
+          <p>Once the name is decided, design the mark. The skull motif from your inspiration could play here — a distinct sub-brand under the TAP umbrella.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Tommy Arnold Productions + ScoreSchool — Brand Analysis v1.0
+  </div>
+
+</div>
+
+</body>
+</html>

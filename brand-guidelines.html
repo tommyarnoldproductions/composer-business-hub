@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Guidelines — Tommy Arnold Productions & ScoreSchool</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  :root {
+    /* TAP Colors */
+    --tap-black: #0F0F0F;
+    --tap-surface: #1A1A1A;
+    --tap-card: #202020;
+    --tap-slate: #2A2A2A;
+    --tap-green: #5DD62C;
+    --tap-green-deep: #337418;
+    --tap-green-electric: #4AE01E;
+    --tap-green-decay: #3D4A35;
+    --tap-red: #8B0000;
+    --tap-gold: #C8B560;
+    --tap-gray: #666666;
+    --tap-white: #F8F8F8;
+
+    /* ScoreSchool Colors */
+    --ss-navy-deep: #0D1B2A;
+    --ss-navy: #1B2D45;
+    --ss-navy-storm: #2C3E50;
+    --ss-gold: #D4A843;
+    --ss-gold-soft: #E8D5A3;
+    --ss-white: #F5F0E8;
+    --ss-text: #C8C0B4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--tap-black);
+    color: #ccc;
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100vh;
+    background: #080808;
+    border-right: 1px solid #1a1a1a;
+    padding: 32px 24px;
+    overflow-y: auto;
+    z-index: 100;
+  }
+  .nav-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: var(--tap-green);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .nav-sub {
+    font-size: 11px;
+    color: #444;
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+  }
+  .nav-section {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #333;
+    margin: 24px 0 12px;
+  }
+  .nav a {
+    display: block;
+    color: #666;
+    text-decoration: none;
+    font-size: 13px;
+    padding: 6px 0;
+    transition: color 0.2s;
+  }
+  .nav a:hover { color: var(--tap-green); }
+
+  /* MAIN */
+  .main {
+    margin-left: 240px;
+    padding: 0;
+  }
+
+  /* COVER */
+  .cover {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 80px;
+    background: linear-gradient(135deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(93,214,44,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .cover-version {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--tap-green);
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+    opacity: 0.7;
+  }
+  .cover h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 64px;
+    font-weight: 900;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .cover h1 span { color: var(--tap-green); }
+  .cover .cover-sub {
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: #555;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+  .cover-meta {
+    font-size: 12px;
+    color: #333;
+    letter-spacing: 1px;
+  }
+
+  /* SECTION LAYOUT */
+  .section {
+    padding: 80px;
+    border-bottom: 1px solid #141414;
+  }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--tap-green);
+    letter-spacing: 2px;
+    opacity: 0.6;
+    margin-bottom: 8px;
+  }
+  .section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .section .lead {
+    font-size: 16px;
+    color: #777;
+    max-width: 680px;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  /* SUB-SECTION */
+  .subsection {
+    margin-bottom: 56px;
+  }
+  .subsection h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--tap-green);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .subsection h3.gold { color: var(--ss-gold); }
+
+  /* COLOR SWATCHES */
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .color-swatch {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #111;
+    border: 1px solid #1a1a1a;
+  }
+  .color-swatch .preview {
+    height: 100px;
+    position: relative;
+  }
+  .color-swatch .info {
+    padding: 12px 14px;
+  }
+  .color-swatch .hex {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: #ddd;
+  }
+  .color-swatch .name {
+    font-size: 11px;
+    color: #555;
+    margin-top: 2px;
+  }
+  .color-swatch .role {
+    font-size: 10px;
+    color: #333;
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* TYPOGRAPHY SPECIMENS */
+  .type-specimen {
+    background: #111;
+    border: 1px solid #1a1a1a;
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 20px;
+  }
+  .type-specimen .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #444;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  .type-specimen .spec {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #333;
+    margin-top: 12px;
+    line-height: 1.8;
+  }
+
+  /* RULES */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .rule-card {
+    background: #111;
+    border: 1px solid #1a1a1a;
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .rule-card.do { border-left: 3px solid var(--tap-green); }
+  .rule-card.dont { border-left: 3px solid #ff4444; }
+  .rule-card h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .rule-card.do h4 { color: var(--tap-green); }
+  .rule-card.dont h4 { color: #ff4444; }
+  .rule-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .rule-card li {
+    font-size: 13px;
+    color: #888;
+    padding: 5px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+  .rule-card.do li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--tap-green);
+    font-size: 12px;
+  }
+  .rule-card.dont li::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    color: #ff4444;
+    font-size: 12px;
+  }
+
+  /* LOGO SECTION */
+  .logo-showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .logo-card {
+    border-radius: 16px;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+  }
+  .logo-card.dark { background: var(--tap-black); border: 1px solid #222; }
+  .logo-card.light { background: var(--tap-white); }
+  .logo-card.navy { background: var(--ss-navy-deep); border: 1px solid #1B2D45; }
+  .logo-card.cream { background: var(--ss-white); }
+  .logo-mark {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 48px;
+    letter-spacing: 2px;
+  }
+  .logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+  .logo-tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-top: 8px;
+    opacity: 0.5;
+  }
+
+  /* VOICE TABLE */
+  .voice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+  }
+  .voice-table th {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #555;
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid #222;
+  }
+  .voice-table td {
+    font-size: 13px;
+    color: #999;
+    padding: 14px 16px;
+    border-bottom: 1px solid #141414;
+    vertical-align: top;
+  }
+  .voice-table td:first-child {
+    font-weight: 600;
+    color: #ccc;
+    white-space: nowrap;
+  }
+
+  /* USAGE EXAMPLES */
+  .example-block {
+    background: #111;
+    border: 1px solid #1a1a1a;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 16px;
+  }
+  .example-block .context {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--tap-green);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    opacity: 0.7;
+  }
+  .example-block .context.gold { color: var(--ss-gold); }
+  .example-block .copy {
+    font-size: 16px;
+    color: #ddd;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* SPACING SYSTEM */
+  .spacing-demo {
+    display: flex;
+    align-items: flex-end;
+    gap: 24px;
+    margin-top: 20px;
+  }
+  .spacing-item {
+    text-align: center;
+  }
+  .spacing-box {
+    background: var(--tap-green);
+    opacity: 0.3;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .spacing-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #555;
+  }
+
+  /* ASSET CHECKLIST */
+  .checklist {
+    list-style: none;
+    padding: 0;
+  }
+  .checklist li {
+    padding: 12px 0;
+    border-bottom: 1px solid #141414;
+    font-size: 14px;
+    color: #888;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .status-ready {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(93,214,44,0.12);
+    color: var(--tap-green);
+  }
+  .status-pending {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(255,170,0,0.12);
+    color: #ffaa00;
+  }
+  .status-future {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.05);
+    color: #444;
+  }
+
+  /* BRAND SIDE BY SIDE */
+  .brand-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .brand-panel {
+    padding: 48px;
+    min-height: 300px;
+  }
+  .brand-panel.tap-bg {
+    background: linear-gradient(135deg, #0a0a0a, #111);
+    border-right: 1px solid #1a1a1a;
+  }
+  .brand-panel.ss-bg {
+    background: linear-gradient(135deg, var(--ss-navy-deep), #0F1F33);
+  }
+  .brand-panel h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .brand-panel.tap-bg h3 { color: var(--tap-green); }
+  .brand-panel.ss-bg h3 { color: var(--ss-gold); }
+
+  /* FOOTER */
+  .footer {
+    padding: 60px 80px;
+    text-align: center;
+  }
+  .footer .mark {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    color: var(--tap-green);
+    margin-bottom: 8px;
+  }
+  .footer p {
+    font-size: 12px;
+    color: #333;
+    letter-spacing: 2px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+  <div class="nav-logo">Brand Kit</div>
+  <div class="nav-sub">v1.0 — March 2026</div>
+
+  <div class="nav-section">Foundation</div>
+  <a href="#brand-architecture">Brand Architecture</a>
+  <a href="#logos">Logo System</a>
+  <a href="#colors">Color System</a>
+  <a href="#typography">Typography</a>
+  <a href="#spacing">Spacing & Layout</a>
+
+  <div class="nav-section">Voice & Tone</div>
+  <a href="#voice-tap">TAP Voice</a>
+  <a href="#voice-ss">ScoreSchool Voice</a>
+  <a href="#copywriting">Copywriting Rules</a>
+
+  <div class="nav-section">Application</div>
+  <a href="#web">Web & Digital</a>
+  <a href="#social">Social Media</a>
+  <a href="#email">Email Marketing</a>
+  <a href="#products">Digital Products</a>
+
+  <div class="nav-section">Reference</div>
+  <a href="#dos-donts">Do's & Don'ts</a>
+  <a href="#asset-checklist">Asset Checklist</a>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+  <!-- COVER -->
+  <div class="cover" id="top">
+    <div class="cover-version">v1.0 // 2026.03.24</div>
+    <h1>BRAND<br><span>GUIDELINES</span></h1>
+    <div class="cover-sub">Tommy Arnold Productions & ScoreSchool</div>
+    <div class="cover-meta">Confidential — For internal use only. This document defines the visual identity, voice, and usage rules for both brands.</div>
+  </div>
+
+  <!-- 01: BRAND ARCHITECTURE -->
+  <div class="section" id="brand-architecture">
+    <div class="section-num">01</div>
+    <h2>Brand Architecture</h2>
+    <p class="lead">Two distinct brands, one ecosystem. Tommy Arnold Productions is the artist brand — dark, cinematic, client-facing. ScoreSchool is the educator brand — warm, approachable, student-facing. They share a founder but never share a visual identity.</p>
+
+    <div class="brand-split">
+      <div class="brand-panel tap-bg">
+        <h3>Tommy Arnold Productions</h3>
+        <p style="font-size:22px; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; letter-spacing:3px; text-transform:uppercase; margin-bottom:16px;">The Artist</p>
+        <p style="color:#888; font-size:14px; margin-bottom:20px;">Custom scores for film, television, and games. Horror/suspense specialty with range across all genres. The work speaks — the brand frames it.</p>
+        <p style="color:#555; font-size:13px;"><strong style="color:#888;">Audience:</strong> Film directors, music editors, game developers, music supervisors</p>
+        <p style="color:#555; font-size:13px;"><strong style="color:#888;">Mood:</strong> Dark, cinematic, industrial, atmospheric, confident</p>
+        <p style="color:#555; font-size:13px;"><strong style="color:#888;">Tagline:</strong> Scores That Serve the Story</p>
+      </div>
+      <div class="brand-panel ss-bg">
+        <h3>ScoreSchool</h3>
+        <p style="font-size:22px; color:#fff; font-family:'Raleway',sans-serif; font-weight:600; letter-spacing:1px; margin-bottom:16px;">The Mentor</p>
+        <p style="color:var(--ss-text); font-size:14px; margin-bottom:20px;">Education and tools for aspiring film and game composers. Practical, no-gatekeeping approach. Built by someone who's been through it.</p>
+        <p style="color:#7A8BA0; font-size:13px;"><strong style="color:var(--ss-text);">Audience:</strong> Aspiring composers, career-changers, self-taught musicians</p>
+        <p style="color:#7A8BA0; font-size:13px;"><strong style="color:var(--ss-text);">Mood:</strong> Warm, knowledgeable, structured, aspirational, inviting</p>
+        <p style="color:#7A8BA0; font-size:13px;"><strong style="color:var(--ss-text);">Tagline:</strong> Score Your First Scene</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02: LOGO SYSTEM -->
+  <div class="section" id="logos">
+    <div class="section-num">02</div>
+    <h2>Logo System</h2>
+    <p class="lead">The "//" mark is the primary brand mark for Tommy Arnold Productions. It should always appear in neon green on dark backgrounds. ScoreSchool uses a wordmark-only approach with Raleway typography.</p>
+
+    <div class="subsection">
+      <h3>Tommy Arnold Productions — Primary Mark</h3>
+      <div class="logo-showcase">
+        <div class="logo-card dark">
+          <div class="logo-mark" style="color: var(--tap-green);">//</div>
+          <div class="logo-text" style="color: #fff;">TOMMY ARNOLD</div>
+          <div class="logo-tagline" style="color: #555;">Scores That Serve the Story</div>
+        </div>
+        <div class="logo-card light">
+          <div class="logo-mark" style="color: var(--tap-green);">//</div>
+          <div class="logo-text" style="color: #111;">TOMMY ARNOLD</div>
+          <div class="logo-tagline" style="color: #999;">Scores That Serve the Story</div>
+        </div>
+      </div>
+      <p style="color:#666; font-size:13px; margin-bottom:8px;"><strong style="color:#aaa;">Minimum clear space:</strong> 1x height of the "//" mark on all sides</p>
+      <p style="color:#666; font-size:13px; margin-bottom:8px;"><strong style="color:#aaa;">Minimum size:</strong> 24px for "//" mark, 80px width for full lockup</p>
+      <p style="color:#666; font-size:13px;"><strong style="color:#aaa;">Favicon / Avatar:</strong> "//" mark only, green on black, square crop</p>
+    </div>
+
+    <div class="subsection">
+      <h3 class="gold">ScoreSchool — Wordmark</h3>
+      <div class="logo-showcase">
+        <div class="logo-card navy">
+          <div style="font-family:'Raleway',sans-serif; font-weight:700; font-size:36px; color:#fff; letter-spacing:2px;">Score<span style="color:var(--ss-gold);">School</span></div>
+          <div class="logo-tagline" style="color:var(--ss-gold); opacity:0.5;">Learn to Score Film & Games</div>
+        </div>
+        <div class="logo-card cream">
+          <div style="font-family:'Raleway',sans-serif; font-weight:700; font-size:36px; color:var(--ss-navy-deep); letter-spacing:2px;">Score<span style="color:var(--ss-gold);">School</span></div>
+          <div class="logo-tagline" style="color:var(--ss-navy-storm);">Learn to Score Film & Games</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03: COLOR SYSTEM -->
+  <div class="section" id="colors">
+    <div class="section-num">03</div>
+    <h2>Color System</h2>
+    <p class="lead">Each brand has a locked palette. TAP is built on neon green and black — electric, dark, cinematic. ScoreSchool is navy and warm gold — professional, warm, inviting. Never mix palettes between brands.</p>
+
+    <div class="subsection">
+      <h3>Tommy Arnold Productions</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: #0F0F0F;"></div><div class="info"><div class="hex">#0F0F0F</div><div class="name">Void Black</div><div class="role">Background</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: #1A1A1A;"></div><div class="info"><div class="hex">#1A1A1A</div><div class="name">Surface</div><div class="role">Cards / Sections</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: #202020;"></div><div class="info"><div class="hex">#202020</div><div class="name">Elevated</div><div class="role">Active elements</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: #5DD62C;"></div><div class="info"><div class="hex">#5DD62C</div><div class="name">Neon Green</div><div class="role">Primary accent</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: #337418;"></div><div class="info"><div class="hex">#337418</div><div class="name">Deep Green</div><div class="role">Hover / Pressed</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: #F8F8F8;"></div><div class="info"><div class="hex">#F8F8F8</div><div class="name">Off White</div><div class="role">Primary text</div></div></div>
+      </div>
+
+      <p style="font-size:12px; color:#444; margin-bottom:12px; letter-spacing:1px; text-transform:uppercase; font-weight:600;">Extended Palette</p>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: #2A2A2A;"></div><div class="info"><div class="hex">#2A2A2A</div><div class="name">Slate</div><div class="role">Borders</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: #4AE01E;"></div><div class="info"><div class="hex">#4AE01E</div><div class="name">Electric</div><div class="role">Glow effects</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: #8B0000;"></div><div class="info"><div class="hex">#8B0000</div><div class="name">Blood Red</div><div class="role">Horror accent</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: #3D4A35;"></div><div class="info"><div class="hex">#3D4A35</div><div class="name">Decay</div><div class="role">Texture overlay</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: #C8B560;"></div><div class="info"><div class="hex">#C8B560</div><div class="name">Tarnished Gold</div><div class="role">Premium accent</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: #666666;"></div><div class="info"><div class="hex">#666666</div><div class="name">Muted</div><div class="role">Secondary text</div></div></div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="gold">ScoreSchool</h3>
+      <div class="color-grid">
+        <div class="color-swatch"><div class="preview" style="background: #0D1B2A;"></div><div class="info"><div class="hex">#0D1B2A</div><div class="name">Deep Navy</div><div class="role">Background</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: #1B2D45;"></div><div class="info"><div class="hex">#1B2D45</div><div class="name">Navy Mid</div><div class="role">Cards / Sections</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: #2C3E50;"></div><div class="info"><div class="hex">#2C3E50</div><div class="name">Storm Blue</div><div class="role">Active elements</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: #D4A843;"></div><div class="info"><div class="hex">#D4A843</div><div class="name">Warm Gold</div><div class="role">Primary accent</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: #E8D5A3;"></div><div class="info"><div class="hex">#E8D5A3</div><div class="name">Soft Gold</div><div class="role">Secondary accent</div></div></div>
+        <div class="color-swatch"><div class="preview" style="background: #F5F0E8;"></div><div class="info"><div class="hex">#F5F0E8</div><div class="name">Warm White</div><div class="role">Primary text</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04: TYPOGRAPHY -->
+  <div class="section" id="typography">
+    <div class="section-num">04</div>
+    <h2>Typography</h2>
+    <p class="lead">Both brands use Google Fonts for universal availability across web, Canva, and print. Each brand has a display, heading, and body typeface with defined weights and spacing rules.</p>
+
+    <div class="subsection">
+      <h3>Tommy Arnold Productions — Type Scale</h3>
+
+      <div class="type-specimen">
+        <div class="label">DISPLAY / HERO</div>
+        <div style="font-family:'Montserrat',sans-serif; font-weight:900; font-size:52px; letter-spacing:8px; text-transform:uppercase; color:#fff; line-height:1.1;">SCORES THAT<br><span style="color:var(--tap-green);">SERVE THE STORY</span></div>
+        <div class="spec">Montserrat Black (900) · All caps · Letter-spacing: 8px · Line-height: 1.1</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="label">H1 — PAGE TITLE</div>
+        <div style="font-family:'Montserrat',sans-serif; font-weight:800; font-size:36px; letter-spacing:5px; text-transform:uppercase; color:#fff;">CUSTOM FILM SCORES</div>
+        <div class="spec">Montserrat ExtraBold (800) · All caps · Letter-spacing: 5px</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="label">H2 — SECTION TITLE</div>
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:24px; letter-spacing:3px; text-transform:uppercase; color:#fff;">My Work</div>
+        <div class="spec">Montserrat Bold (700) · All caps · Letter-spacing: 3px</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="label">H3 — SUBSECTION</div>
+        <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:16px; letter-spacing:2px; text-transform:uppercase; color:#ddd;">Horror & Suspense</div>
+        <div class="spec">Montserrat SemiBold (600) · All caps · Letter-spacing: 2px</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="label">BODY TEXT</div>
+        <div style="font-family:'Inter',sans-serif; font-weight:400; font-size:16px; color:#999; line-height:1.7; max-width:600px;">Crafting immersive scores that blend symphonic and electronic elements to enhance storytelling. Every note is designed to amplify the director's creative vision and serve the emotional arc of the story.</div>
+        <div class="spec">Inter Regular (400) · Sentence case · 16px · Line-height: 1.7 · Color: #999</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="label">CAPTION / META</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-weight:400; font-size:12px; color:#555; letter-spacing:1px;">Film Score · 2026 · Horror / Suspense</div>
+        <div class="spec">JetBrains Mono Regular (400) · 12px · Letter-spacing: 1px · Color: #555</div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="gold">ScoreSchool — Type Scale</h3>
+
+      <div class="type-specimen" style="background: var(--ss-navy-deep); border-color: #1B2D45;">
+        <div class="label" style="color: #3A5068;">DISPLAY / HERO</div>
+        <div style="font-family:'Raleway',sans-serif; font-weight:700; font-size:48px; color:#fff; letter-spacing:1px; line-height:1.15;">Score Your<br><span style="color:var(--ss-gold);">First Scene</span></div>
+        <div class="spec" style="color:#2C3E50;">Raleway Bold (700) · Title case · Letter-spacing: 1px · Line-height: 1.15</div>
+      </div>
+
+      <div class="type-specimen" style="background: var(--ss-navy-deep); border-color: #1B2D45;">
+        <div class="label" style="color: #3A5068;">H1 — PAGE TITLE</div>
+        <div style="font-family:'Raleway',sans-serif; font-weight:600; font-size:32px; color:#fff; letter-spacing:0.5px;">Build Your Composing Workflow</div>
+        <div class="spec" style="color:#2C3E50;">Raleway SemiBold (600) · Title case · Letter-spacing: 0.5px</div>
+      </div>
+
+      <div class="type-specimen" style="background: var(--ss-navy-deep); border-color: #1B2D45;">
+        <div class="label" style="color: #3A5068;">H2 — SECTION TITLE</div>
+        <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:20px; color:var(--ss-gold); letter-spacing:1px;">Module 3: Orchestration Basics</div>
+        <div class="spec" style="color:#2C3E50;">Montserrat SemiBold (600) · Title case · Letter-spacing: 1px · Gold accent</div>
+      </div>
+
+      <div class="type-specimen" style="background: var(--ss-navy-deep); border-color: #1B2D45;">
+        <div class="label" style="color: #3A5068;">BODY TEXT</div>
+        <div style="font-family:'Raleway',sans-serif; font-weight:400; font-size:16px; color:var(--ss-text); line-height:1.7; max-width:600px;">You don't need a degree to score your first film. You need a process. This course gives you exactly that — a real-world workflow built from 4 years of professional film scoring experience.</div>
+        <div class="spec" style="color:#2C3E50;">Raleway Regular (400) · Sentence case · 16px · Line-height: 1.7 · Color: #C8C0B4</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05: SPACING -->
+  <div class="section" id="spacing">
+    <div class="section-num">05</div>
+    <h2>Spacing & Layout</h2>
+    <p class="lead">Consistent spacing creates rhythm. Both brands use an 8px base grid. Generous whitespace is a key part of the premium feel — don't crowd elements.</p>
+
+    <div class="subsection">
+      <h3>Base Grid: 8px</h3>
+      <div class="spacing-demo">
+        <div class="spacing-item"><div class="spacing-box" style="width:8px; height:8px;"></div><div class="spacing-label">8px</div></div>
+        <div class="spacing-item"><div class="spacing-box" style="width:16px; height:16px;"></div><div class="spacing-label">16px</div></div>
+        <div class="spacing-item"><div class="spacing-box" style="width:24px; height:24px;"></div><div class="spacing-label">24px</div></div>
+        <div class="spacing-item"><div class="spacing-box" style="width:32px; height:32px;"></div><div class="spacing-label">32px</div></div>
+        <div class="spacing-item"><div class="spacing-box" style="width:48px; height:48px;"></div><div class="spacing-label">48px</div></div>
+        <div class="spacing-item"><div class="spacing-box" style="width:64px; height:64px;"></div><div class="spacing-label">64px</div></div>
+        <div class="spacing-item"><div class="spacing-box" style="width:80px; height:80px;"></div><div class="spacing-label">80px</div></div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3>Layout Rules</h3>
+      <div class="rules-grid">
+        <div class="rule-card do">
+          <h4>Do</h4>
+          <ul>
+            <li>Use 80px minimum section padding on desktop</li>
+            <li>Give headlines 48px+ bottom margin before body text</li>
+            <li>Keep body text max-width at 680px for readability</li>
+            <li>Use 16-24px gap between grid items</li>
+            <li>Allow elements to breathe — negative space is power</li>
+          </ul>
+        </div>
+        <div class="rule-card dont">
+          <h4>Don't</h4>
+          <ul>
+            <li>Cram content edge-to-edge</li>
+            <li>Use inconsistent spacing between sections</li>
+            <li>Let body text span full width on desktop</li>
+            <li>Stack multiple CTAs without breathing room</li>
+            <li>Use borders where spacing would suffice</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06: VOICE — TAP -->
+  <div class="section" id="voice-tap">
+    <div class="section-num">06</div>
+    <h2>Voice & Tone — TAP</h2>
+    <p class="lead">Tommy Arnold Productions speaks with artist energy — confident, atmospheric, intentional. Every word should feel like it belongs in a dark room with dramatic lighting.</p>
+
+    <table class="voice-table">
+      <tr><th>Attribute</th><th>Description</th><th>Example</th></tr>
+      <tr><td>Confident</td><td>State what you do without hedging. No "I think" or "maybe."</td><td>"I score the moments that make your skin crawl."</td></tr>
+      <tr><td>Atmospheric</td><td>Evoke feeling, not just information. Use sensory language.</td><td>"Tension and texture, woven into every frame."</td></tr>
+      <tr><td>Intentional</td><td>Everything has purpose. No filler words or generic phrases.</td><td>"Custom score" — never "background music."</td></tr>
+      <tr><td>Direct</td><td>Respect the reader's time. Get to the point.</td><td>"Let's talk about your project." — not "Feel free to reach out anytime!"</td></tr>
+    </table>
+
+    <div style="margin-top: 32px;">
+      <div class="example-block">
+        <div class="context">// EMAIL OUTREACH — DIRECTOR PITCH</div>
+        <div class="copy">"I watched the trailer for [Film] — the tension in the interrogation scene is exactly the kind of work I love to score. I specialize in horror and suspense, and I think the score could push those moments even further. Here's my reel: [link]"</div>
+      </div>
+      <div class="example-block">
+        <div class="context">// SOCIAL — INSTAGRAM / TIKTOK</div>
+        <div class="copy">"This cue started as a single cello note and a room full of silence. 47 layers later, it became the sound of dread. Here's how."</div>
+      </div>
+      <div class="example-block">
+        <div class="context">// WEBSITE — SERVICES PAGE</div>
+        <div class="copy">"Every film deserves a score that doesn't just accompany the story — it transforms it. I work directly with directors to uncover the emotional core of each scene and build custom music around it."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07: VOICE — SCORESCHOOL -->
+  <div class="section" id="voice-ss">
+    <div class="section-num">07</div>
+    <h2>Voice & Tone — ScoreSchool</h2>
+    <p class="lead">ScoreSchool speaks with mentor energy — warm, knowledgeable, no-gatekeeping. Like a friend who's three years ahead of you showing you the shortcuts.</p>
+
+    <table class="voice-table">
+      <tr><th>Attribute</th><th>Description</th><th>Example</th></tr>
+      <tr><td>Encouraging</td><td>Build confidence. Acknowledge the challenge without discouraging.</td><td>"Most composers overthink their first project. Here's how to actually finish one."</td></tr>
+      <tr><td>Practical</td><td>Lead with process, not theory. Give people what they can use today.</td><td>"Here's the process" — not "Here's the theory behind…"</td></tr>
+      <tr><td>Anti-Gatekeeper</td><td>You don't need permission, a degree, or expensive gear to start.</td><td>"You don't need permission to start. You need a process."</td></tr>
+      <tr><td>Structured</td><td>Break things down. Steps, modules, frameworks. Clarity over cleverness.</td><td>"Step 1: Watch the scene. Step 2: Identify the emotion. Step 3: Find your tonic."</td></tr>
+    </table>
+
+    <div style="margin-top: 32px;">
+      <div class="example-block">
+        <div class="context gold">// COURSE SALES PAGE</div>
+        <div class="copy">"I built ScoreSchool because nobody taught me this stuff when I was starting out. Score Your First Scene gives you the exact workflow I use on professional projects — broken down into steps anyone can follow."</div>
+      </div>
+      <div class="example-block">
+        <div class="context gold">// EMAIL — NURTURE SEQUENCE</div>
+        <div class="copy">"The biggest mistake new composers make? Trying to score the whole film before they've nailed one scene. This week, I want you to focus on just 30 seconds. Here's how to pick the right scene to start with."</div>
+      </div>
+      <div class="example-block">
+        <div class="context gold">// SOCIAL — EDUCATIONAL CONTENT</div>
+        <div class="copy">"Your DAW template isn't just organization — it's your creative launchpad. Here are the 5 tracks I set up before I write a single note."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 08: COPYWRITING RULES -->
+  <div class="section" id="copywriting">
+    <div class="section-num">08</div>
+    <h2>Copywriting Rules</h2>
+    <p class="lead">Words to use, words to avoid, and rules that apply across both brands.</p>
+
+    <div class="rules-grid">
+      <div class="rule-card do">
+        <h4>TAP — Use These</h4>
+        <ul>
+          <li>"Custom score" (never "background music")</li>
+          <li>"Tension and texture"</li>
+          <li>"I score the unsettling moments"</li>
+          <li>"Dramatic. Dark. Intentional."</li>
+          <li>Director/project-specific language in outreach</li>
+          <li>"Scores That Serve the Story"</li>
+        </ul>
+      </div>
+      <div class="rule-card dont">
+        <h4>TAP — Never Use</h4>
+        <ul>
+          <li>"Background music" or "stock music"</li>
+          <li>Generic pitch language</li>
+          <li>"I can do any genre" (lead with specialty)</li>
+          <li>Offering to send additional samples after reel</li>
+          <li>"Just reaching out" or "touching base"</li>
+          <li>Exclamation marks in outreach emails</li>
+        </ul>
+      </div>
+      <div class="rule-card do">
+        <h4>ScoreSchool — Use These</h4>
+        <ul>
+          <li>"Here's the process"</li>
+          <li>"You don't need permission to start"</li>
+          <li>"Score your first scene"</li>
+          <li>"Let's break this down"</li>
+          <li>"Step by step"</li>
+          <li>"Real-world workflow"</li>
+        </ul>
+      </div>
+      <div class="rule-card dont">
+        <h4>ScoreSchool — Never Use</h4>
+        <ul>
+          <li>"Easy" (undermines the craft)</li>
+          <li>"Just" (minimizing)</li>
+          <li>Academic jargon without explanation</li>
+          <li>"Content creator" when referring to composers</li>
+          <li>"AMAZING OPPORTUNITY" energy</li>
+          <li>Anything gatekeep-y or elitist</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 09: WEB & DIGITAL -->
+  <div class="section" id="web">
+    <div class="section-num">09</div>
+    <h2>Web & Digital</h2>
+    <p class="lead">Design patterns for websites, landing pages, and digital products. Inspired by Spitfire Audio's premium product design and modern dark web aesthetics.</p>
+
+    <div class="subsection">
+      <h3>TAP Website Patterns</h3>
+      <div class="rules-grid">
+        <div class="rule-card do">
+          <h4>Design Principles</h4>
+          <ul>
+            <li>Full-bleed cinematic hero sections with atmospheric texture</li>
+            <li>Wide letter-spaced headlines (6-8px spacing)</li>
+            <li>Generous padding (80px+ between sections)</li>
+            <li>Subtle texture/grain on backgrounds (not flat black)</li>
+            <li>Audio player as a featured section, not an afterthought</li>
+            <li>Testimonials with real photos — social proof front and center</li>
+            <li>One clear CTA per section</li>
+          </ul>
+        </div>
+        <div class="rule-card do">
+          <h4>Technical Specs</h4>
+          <ul>
+            <li>Max content width: 1200px</li>
+            <li>Body text: 16px Inter, max-width 680px</li>
+            <li>Section padding: 80px vertical, 40-80px horizontal</li>
+            <li>Border radius: 12-16px for cards</li>
+            <li>Border color: #1A1A1A (subtle, never harsh)</li>
+            <li>Hover states: Neon green glow or border shift</li>
+            <li>Transitions: 200ms ease for all interactions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="gold">ScoreSchool Website Patterns</h3>
+      <div class="rules-grid">
+        <div class="rule-card do">
+          <h4>Design Principles</h4>
+          <ul>
+            <li>Navy backgrounds with warm gold accents</li>
+            <li>Clean, readable layouts — not overly dark</li>
+            <li>Course modules displayed as clear, numbered cards</li>
+            <li>Testimonials and social proof near CTAs</li>
+            <li>Email signup as a prominent element (lead magnet)</li>
+            <li>Progress indicators and "what you'll learn" lists</li>
+            <li>Warm, inviting imagery (studio shots, DAW screenshots)</li>
+          </ul>
+        </div>
+        <div class="rule-card do">
+          <h4>Sales Page Structure (SYFS)</h4>
+          <ul>
+            <li>Hero: Pain point → Promise → CTA</li>
+            <li>Social proof: Director testimonials</li>
+            <li>Curriculum: Module-by-module breakdown</li>
+            <li>About: Your story + credentials (not a resume)</li>
+            <li>Pricing: Clear tiers, early bird pricing</li>
+            <li>FAQ: Objection handling</li>
+            <li>Final CTA: Urgency + guarantee</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10: SOCIAL MEDIA -->
+  <div class="section" id="social">
+    <div class="section-num">10</div>
+    <h2>Social Media</h2>
+    <p class="lead">TikTok-first strategy. All content starts as short-form vertical video, then gets repurposed. Visual templates should feel instantly recognizable as Tommy Arnold content.</p>
+
+    <div class="subsection">
+      <h3>Content Calendar Structure</h3>
+      <table class="voice-table">
+        <tr><th>Week</th><th>Content Type</th><th>Target Audience</th><th>Platform</th></tr>
+        <tr><td>Week 1-2</td><td>Showcase (reels, film work, behind-the-scenes)</td><td>Directors & Producers</td><td>TikTok → Reels → Threads</td></tr>
+        <tr><td>Week 3-4</td><td>Educational (tips, tutorials, workflow)</td><td>Aspiring Composers</td><td>TikTok → Reels → YouTube</td></tr>
+      </table>
+    </div>
+
+    <div class="subsection">
+      <h3>Template Specs</h3>
+      <table class="voice-table">
+        <tr><th>Format</th><th>Dimensions</th><th>Brand</th><th>Notes</th></tr>
+        <tr><td>TikTok / Reels</td><td>1080 x 1920</td><td>Both</td><td>Primary format — all content starts here</td></tr>
+        <tr><td>Instagram Post</td><td>1080 x 1080</td><td>Both</td><td>Carousel for educational, single for showcase</td></tr>
+        <tr><td>YouTube Thumbnail</td><td>1280 x 720</td><td>Both</td><td>Bold text, face visible, high contrast</td></tr>
+        <tr><td>Facebook Cover</td><td>820 x 312</td><td>TAP</td><td>Cinematic, atmospheric</td></tr>
+        <tr><td>Email Header</td><td>600 x 200</td><td>Both</td><td>Brand-specific palette</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 11: EMAIL MARKETING -->
+  <div class="section" id="email">
+    <div class="section-num">11</div>
+    <h2>Email Marketing</h2>
+    <p class="lead">MailerLite is the platform. Each brand gets its own email template, tone, and sender identity. Never cross-pollinate brand emails.</p>
+
+    <div class="brand-split">
+      <div class="brand-panel tap-bg">
+        <h3>TAP Emails</h3>
+        <p style="color:#888; font-size:14px; margin-bottom:16px;"><strong style="color:#ccc;">Sender:</strong> Tommy Arnold</p>
+        <p style="color:#888; font-size:14px; margin-bottom:16px;"><strong style="color:#ccc;">Tone:</strong> Professional, direct, cinematic. No fluff.</p>
+        <p style="color:#888; font-size:14px; margin-bottom:16px;"><strong style="color:#ccc;">Template:</strong> Dark background (#0F0F0F), green accent (#5DD62C), Montserrat headings</p>
+        <p style="color:#888; font-size:14px;"><strong style="color:#ccc;">Use for:</strong> Director outreach sequences, project updates, industry networking</p>
+      </div>
+      <div class="brand-panel ss-bg">
+        <h3>ScoreSchool Emails</h3>
+        <p style="color:var(--ss-text); font-size:14px; margin-bottom:16px;"><strong style="color:#fff;">Sender:</strong> Tommy @ ScoreSchool</p>
+        <p style="color:var(--ss-text); font-size:14px; margin-bottom:16px;"><strong style="color:#fff;">Tone:</strong> Warm, encouraging, educational. Like a weekly mentor letter.</p>
+        <p style="color:var(--ss-text); font-size:14px; margin-bottom:16px;"><strong style="color:#fff;">Template:</strong> Navy background (#0D1B2A), gold accent (#D4A843), Raleway headings</p>
+        <p style="color:var(--ss-text); font-size:14px;"><strong style="color:#fff;">Use for:</strong> Nurture sequences, course launches, educational content, product drops</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12: DIGITAL PRODUCTS -->
+  <div class="section" id="products">
+    <div class="section-num">12</div>
+    <h2>Digital Products</h2>
+    <p class="lead">All digital products sold through Payhip. Product cover art should look premium — think Spitfire Audio product cards, not clip-art PDFs.</p>
+
+    <div class="subsection">
+      <h3>Product Cover Design Rules</h3>
+      <div class="rules-grid">
+        <div class="rule-card do">
+          <h4>Do</h4>
+          <ul>
+            <li>Use brand-consistent cover art (dark bg for TAP, navy for SS)</li>
+            <li>Bold title in Montserrat or Raleway</li>
+            <li>Consistent sizing across all product listings</li>
+            <li>Include a subtle "ScoreSchool" or "TAP" brand mark</li>
+            <li>Use mockups for digital products (iPad, screen, book)</li>
+          </ul>
+        </div>
+        <div class="rule-card dont">
+          <h4>Don't</h4>
+          <ul>
+            <li>Use different design styles per product</li>
+            <li>Forget the brand mark</li>
+            <li>Use low-contrast text on covers</li>
+            <li>Mix TAP and ScoreSchool branding on one product</li>
+            <li>Use stock photography as the main visual</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13: DO'S & DON'TS -->
+  <div class="section" id="dos-donts">
+    <div class="section-num">13</div>
+    <h2>Master Do's & Don'ts</h2>
+    <p class="lead">Cross-brand rules that apply everywhere, every time.</p>
+
+    <div class="rules-grid">
+      <div class="rule-card do">
+        <h4>Always</h4>
+        <ul>
+          <li>Lead with TAP green (#5DD62C) as the accent — it's your signature</li>
+          <li>Use wide letter-spacing on TAP headings (minimum 3px)</li>
+          <li>Keep ScoreSchool warm and approachable (gold, navy, readable)</li>
+          <li>Maintain generous whitespace — premium = breathing room</li>
+          <li>Use real imagery (studio shots, DAW screenshots, your face)</li>
+          <li>Match voice to brand (artist energy for TAP, mentor energy for SS)</li>
+          <li>Include a CTA in every piece of content</li>
+          <li>Keep the "//" mark in neon green</li>
+        </ul>
+      </div>
+      <div class="rule-card dont">
+        <h4>Never</h4>
+        <ul>
+          <li>Mix TAP and ScoreSchool visual languages</li>
+          <li>Use neon green in ScoreSchool materials</li>
+          <li>Use warm gold in TAP materials (except extended palette sparingly)</li>
+          <li>Sound corporate — both brands are personal</li>
+          <li>Use stock photography as primary imagery</li>
+          <li>Stretch, rotate, or recolor the logo</li>
+          <li>Accept projects under $1,000 or do spec work</li>
+          <li>Offer to send additional samples when the reel has been shared</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14: ASSET CHECKLIST -->
+  <div class="section" id="asset-checklist">
+    <div class="section-num">14</div>
+    <h2>Asset Checklist</h2>
+    <p class="lead">Track what's built, what's in progress, and what's planned.</p>
+
+    <div class="subsection">
+      <h3>Tommy Arnold Productions</h3>
+      <ul class="checklist">
+        <li>"//" logo mark (neon green on black) <span class="status-ready">LIVE</span></li>
+        <li>"TOMMY ARNOLD" wordmark (Montserrat 800, wide spacing) <span class="status-ready">LIVE</span></li>
+        <li>Color palette locked (#0F0F0F / #5DD62C / #F8F8F8) <span class="status-ready">LOCKED</span></li>
+        <li>Typography system (Montserrat + Inter) <span class="status-ready">LOCKED</span></li>
+        <li>Horror reel (ReelCrafter) <span class="status-ready">LIVE</span></li>
+        <li>General reel (ReelCrafter) <span class="status-ready">LIVE</span></li>
+        <li>Website (tommyarnoldmusic.com — Squarespace) <span class="status-pending">REFRESH</span></li>
+        <li>Social media templates (TikTok, IG, YouTube) <span class="status-pending">BUILD</span></li>
+        <li>Email templates (MailerLite) <span class="status-pending">BUILD</span></li>
+        <li>Canva brand kit <span class="status-pending">UPDATE</span></li>
+        <li>Publishing company mark <span class="status-future">FUTURE</span></li>
+        <li>Corporate reel <span class="status-future">FUTURE</span></li>
+      </ul>
+    </div>
+
+    <div class="subsection">
+      <h3 class="gold">ScoreSchool</h3>
+      <ul class="checklist">
+        <li>"ScoreSchool" wordmark (Raleway 700) <span class="status-pending">DESIGN</span></li>
+        <li>Color palette locked (#0D1B2A / #D4A843 / #F5F0E8) <span class="status-ready">LOCKED</span></li>
+        <li>Typography system (Raleway + Montserrat + Raleway) <span class="status-ready">LOCKED</span></li>
+        <li>Score Your First Scene sales page <span class="status-pending">BUILD</span></li>
+        <li>Course product cover art <span class="status-pending">DESIGN</span></li>
+        <li>Product listing templates (Payhip) <span class="status-pending">BUILD</span></li>
+        <li>Social media templates <span class="status-pending">BUILD</span></li>
+        <li>Email templates (MailerLite) <span class="status-pending">BUILD</span></li>
+        <li>Canva brand kit <span class="status-pending">CREATE</span></li>
+        <li>Lead magnet design <span class="status-pending">BUILD</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="mark">//</div>
+    <p>Tommy Arnold Productions & ScoreSchool — Brand Guidelines v1.0</p>
+    <p style="margin-top:4px;">March 2026 · Confidential</p>
+  </div>
+
+</div>
+
+</body>
+</html>
