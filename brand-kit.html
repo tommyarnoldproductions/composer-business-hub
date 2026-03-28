@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>Brand Kit — Tommy Arnold Productions & ScoreSchool</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
@@ -566,9 +569,14 @@
     .voice-grid { grid-template-columns: 1fr; }
     .sections-grid { grid-template-columns: 1fr; }
     .cta-grid { grid-template-columns: 1fr; }
+    .ref-grid { grid-template-columns: 1fr; }
+    .imagery-grid { grid-template-columns: 1fr; }
+    .spacing-row { flex-direction: column; gap: 16px; }
+    .icon-grid { flex-direction: column; gap: 16px; }
   }
 
   @media (max-width: 480px) {
+    .topnav-links { gap: 8px; flex-wrap: wrap; }
     .topnav-links a { font-size: 10px; letter-spacing: 0.5px; }
     .cover { padding: 32px 16px; }
     .cover h1 { font-size: 24px; }
