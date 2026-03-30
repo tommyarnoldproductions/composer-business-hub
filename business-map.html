@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Business Mind Map | Tommy Arnold</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── NAV ── */
+        .back-link {
+            display: inline-block;
+            padding: 20px 24px;
+            color: #39ff14;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+        .back-link:hover { opacity: 1; }
+
+        /* ── HEADER ── */
+        .page-header {
+            text-align: center;
+            padding: 10px 20px 20px;
+        }
+        .page-header h1 {
+            color: #39ff14;
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .page-header p {
+            color: #666;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ── TAB NAVIGATION ── */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            padding: 0 20px 24px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            background: #141414;
+            border: 1px solid #222;
+            color: #888;
+            padding: 10px 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .tab-btn:hover { border-color: #39ff14; color: #e0e0e0; }
+        .tab-btn.active {
+            background: #39ff14;
+            color: #0a0a0a;
+            border-color: #39ff14;
+            font-weight: 700;
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* ── MIND MAP ── */
+        #mindmap-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 10px;
+            overflow: visible;
+        }
+        #mindmap-svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ── TOOLTIP ── */
+        .tooltip {
+            position: fixed;
+            background: #1a1a1a;
+            border: 1px solid #39ff14;
+            color: #e0e0e0;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            line-height: 1.5;
+            max-width: 260px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 100;
+        }
+        .tooltip.visible { opacity: 1; }
+        .tooltip .freq {
+            color: #39ff14;
+            font-weight: 600;
+            display: block;
+            margin-top: 4px;
+        }
+        .tooltip .flag {
+            color: #f5a623;
+            font-weight: 600;
+        }
+
+        /* ── LEGEND ── */
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 16px 20px;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #666;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        /* ── TASK LIST ── */
+        .task-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .freq-group {
+            margin-bottom: 32px;
+        }
+        .freq-group h2 {
+            color: #39ff14;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .freq-group .freq-sub {
+            color: #555;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .task-card {
+            background: #141414;
+            border: 1px solid #222;
+            border-left: 3px solid #333;
+            border-radius: 6px;
+            padding: 14px 18px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            transition: border-color 0.2s;
+        }
+        .task-card:hover { border-color: #333; border-left-color: #39ff14; }
+
+        .task-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .task-info { flex: 1; }
+        .task-info h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #e0e0e0;
+            margin-bottom: 3px;
+        }
+        .task-info .task-desc {
+            font-size: 0.75rem;
+            color: #777;
+            line-height: 1.5;
+        }
+
+        .task-badges {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+        .badge {
+            font-size: 0.6rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .badge-composition { background: #1a0a2e; color: #a78bfa; }
+        .badge-content { background: #0a1e2e; color: #60a5fa; }
+        .badge-social { background: #2e1a0a; color: #f59e0b; }
+        .badge-marketing { background: #0a2e1a; color: #34d399; }
+        .badge-scoreschool { background: #2e2a0a; color: #d4a843; }
+        .badge-admin { background: #1a1a1a; color: #9ca3af; }
+        .badge-future { background: #2e0a1a; color: #f472b6; }
+        .badge-review { background: #2e1a00; color: #f5a623; border: 1px solid #f5a62344; }
+
+        /* ── SUMMARY STATS ── */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            padding: 0 20px;
+        }
+        .stat-card {
+            background: #141414;
+            border: 1px solid #222;
+            border-radius: 6px;
+            padding: 14px;
+            text-align: center;
+        }
+        .stat-num {
+            color: #39ff14;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+        .stat-label {
+            color: #666;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 600px) {
+            .page-header h1 { font-size: 1.1rem; letter-spacing: 3px; }
+            .tab-btn { padding: 8px 12px; font-size: 0.65rem; }
+            .legend { gap: 12px; font-size: 0.6rem; }
+            .stat-num { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+<a class="back-link" href="index.html">← Hub</a>
+
+<div class="page-header">
+    <h1>Business Mind Map</h1>
+    <p>Everything Tommy Arnold Productions</p>
+</div>
+
+<div class="tabs">
+    <button class="tab-btn active" data-tab="map">Mind Map</button>
+    <button class="tab-btn" data-tab="tasks">Task List</button>
+</div>
+
+<!-- ═══════════════ MIND MAP TAB ═══════════════ -->
+<div class="tab-content active" id="tab-map">
+
+    <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:#a78bfa"></div> Composition</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#60a5fa"></div> Content</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div> Social Media</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#34d399"></div> Marketing</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#d4a843"></div> Score School</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#9ca3af"></div> Admin</div>
+        <div class="legend-item"><div class="legend-dot" style="background:#f472b6"></div> Future</div>
+    </div>
+
+    <div id="mindmap-container">
+        <svg id="mindmap-svg" viewBox="0 0 1100 900" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+</div>
+
+<!-- ═══════════════ TASK LIST TAB ═══════════════ -->
+<div class="tab-content" id="tab-tasks">
+
+    <div class="stats-bar">
+        <div class="stat-card">
+            <div class="stat-num">30+</div>
+            <div class="stat-label">Recurring Tasks</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num">7</div>
+            <div class="stat-label">Business Areas</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num">15+</div>
+            <div class="stat-label">Weekly Posts</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num">~10</div>
+            <div class="stat-label">Library Tracks/Mo</div>
+        </div>
+    </div>
+
+    <!-- DAILY -->
+    <div class="task-section">
+        <div class="freq-group">
+            <h2>Daily</h2>
+            <p class="freq-sub">Every day or nearly every day</p>
+
+            <div class="task-card">
+                <div class="task-icon" style="background:#1a0a2e;color:#a78bfa">🎹</div>
+                <div class="task-info">
+                    <h3>Compose / Produce</h3>
+                    <div class="task-desc">Film scoring sessions, production projects, or library tracks. ~2–3 hours of deep focus per day.</div>
+                    <div class="task-badges"><span class="badge badge-composition">Composition</span></div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-icon" style="background:#2e1a0a;color:#f59e0b">📱</div>
+                <div class="task-info">
+                    <h3>YouTube Shorts</h3>
+                    <div class="task-desc">Post 1 short per day, at least 5 days/week. Pre-batched from monthly YouTube shoot via OpusClip.</div>
+                    <div class="task-badges"><span class="badge badge-content">Content</span></div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-icon" style="background:#2e1a0a;color:#f59e0b">💬</div>
+                <div class="task-info">
+                    <h3>Threads + Twitter Post</h3>
+                    <div class="task-desc">1 text post to Threads and 1 to Twitter every day. Quick thoughts, tips, behind-the-scenes, industry takes.</div>
+                    <div class="task-badges"><span class="badge badge-social">Social Media</span></div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-icon" style="background:#2e1a0a;color:#f59e0b">🤝</div>
+                <div class="task-info">
+                    <h3>Organic Engagement</h3>
+                    <div class="task-desc">Interact with Instagram and TikTok users — comment, reply, DM. Builds community and surfaces opportunities.</div>
+                    <div class="task-badges"><span class="badge badge-marketing">Marketing</span></div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-icon" style="background:#1a1a1a;color:#9ca3af">📓</div>
+                <div class="task-info">
+                    <h3>Business Journal</h3>
+                    <div class="task-desc">Daily entry in Notion. Reflect on wins, blockers, ideas, and next-day priorities.</div>
+                    <div class="task-badges"><span class="badge badge-admin">Admin</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3–5x / WEEK -->
+        <div class="freq-group">
+            <h2>3–5x Per Week</h2>
+            <p class="freq-sub">Multiple times per week, not necessarily daily</p>
+
+            <div class="task-card">
+                <div class="task-icon" style="background:#2e1a0a;color:#f59e0b">🎬</div>
+                <div class="task-info">
+                    <h3>Instagram Reels</h3>
+                    <div class="task-desc">Post 3–5 reels per week. Mix of showcase content (weeks 1–2) and educational content (weeks 3–4).</div>
+                    <div class="task-badges"><span class="badge badge-social">Social Media</span></div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-icon" style="background:#2e1a0a;color:#f59e0b">📸</div>
+                <div class="task-info">
+                    <h3>Instagram Stories</h3>
+                    <div class="task-desc">3–4 stories per week. Behind-the-scenes, polls, day-in-the-life, quick tips.</div>
+                    <div class="task-badges"><span class="badge badge-social">Social Media</span></div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-icon" style="background:#2e1a0a;color:#f59e0b">🎵</div>
+                <div class="task-info">
+                    <h3>TikTok Posts</h3>
+                    <div class="task-desc">3–5 posts per week. Repurpose shorts or create platform-native content.</div>
+                    <div class="task-badges"><span class="badge badge-social">Social Media</span></div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-icon" style="background:#0a1e2e;color:#60a5fa">📝</div>
+                <div class="task-info">
+                    <h3>YouTube Text Posts</h3>
+                    <div class="task-desc">3 community posts per week. Engagement polls, tips, announcements, behind-the-scenes.</div>
+                    <div class="task-badges"><span class="badge badge-content">Content</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEKLY -->
+        <div class="freq-group">
+            <h2>Weekly</h2>
+            <p class="freq-sub">Once per week</p>
+
+            <div class="task-card">
+                <div class="task-icon" style="background:#0a1e2e;color:#60a5fa">🎥</div>
+                <div class="task-info">
+                    <h3>YouTube Video</h3>
+                    <div class="task-desc">Shoot and publish 1 long-form video per week. Composer education, tutorials, behind-the-scenes. Gets cut into shorts.</div>
+                    <div class="task-badges"><span class="badge badge-content">Content</span></div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-icon" style="background:#0a2e1a;color:#34d399">📧</div>
+                <div class="task-info">
+                    <h3>Filmmaker Outreach</h3>
+                    <div class="task-desc">Research leads and send 10–15 personalized pitcher emails per week. 3-email sequence (cold → follow-up 1 → follow-up 2).</div>
+                    <div class="task-badges"><span class="badge badge-marketing">Marketing</span></div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-icon" style="background:#0a2e1a;color:#34d399">📊</div>
+                <div class="task-info">
+                    <h3>Ad Performance Review</h3>
+                    <div class="task-desc">Check Instagram ads performance. Adjust targeting, creative, or budget. Monitor email subscriber acquisition cost.</div>
+                    <div class="task-badges"><span class="badge badge-marketing">Marketing</span></div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-icon" style="background:#2e2a0a;color:#d4a843">🏫</div>
+                <div class="task-info">
+                    <h3>Score School Development</h3>
+                    <div class="task-desc">Build curriculum, lesson materials, and composing program content. Currently in development phase.</div>
+                    <div class="task-badges"><span class="badge badge-scoreschool">Score School</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BI-WEEKLY -->
+        <div class="freq-group">
+            <h2>Bi-Weekly</h2>
+            <p class="freq-sub">Every two weeks</p>
+
+            <div class="task-card">
+                <div class="task-icon" style="background:#0a1e2e;color:#60a5fa">✍️</div>
+                <div class="task-info">
+                    <h3>Substack Article</h3>
+                    <div class="task-desc">Compose and publish 1 article every 2 weeks. Tutorials, composer life, industry insights.</div>
+                    <div class="task-badges">
+                        <span class="badge badge-content">Content</span>
+                        <span class="badge badge-review">⚠ Under Review — 10 subs</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-icon" style="background:#1a1a1a;color:#9ca3af">💰</div>
+                <div class="task-info">
+                    <h3>Expense & Tax Audit</h3>
+                    <div class="task-desc">Review business expenses in QuickBooks. Categorize receipts, reconcile accounts. Keep clean records for tax filing.</div>
+                    <div class="task-badges"><span class="badge badge-admin">Admin</span></div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-icon" style="background:#1a1a1a;color:#9ca3af">🎼</div>
+                <div class="task-info">
+                    <h3>BMI Royalty Check</h3>
+                    <div class="task-desc">Monitor BMI account for new cue sheet appearances from library placements on TV. Don't miss royalties.</div>
+                    <div class="task-badges"><span class="badge badge-admin">Admin</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MONTHLY -->
+        <div class="freq-group">
+            <h2>Monthly</h2>
+            <p class="freq-sub">Once per month or ongoing monthly commitment</p>
+
+            <div class="task-card">
+                <div class="task-icon" style="background:#1a0a2e;color:#a78bfa">🎧</div>
+                <div class="task-info">
+                    <h3>Music Library Briefs</h3>
+                    <div class="task-desc">Compose ~10 tracks per month across multiple libraries. Follow monthly briefs for genre/style requirements.</div>
+                    <div class="task-badges"><span class="badge badge-composition">Composition</span></div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-icon" style="background:#0a1e2e;color:#60a5fa">🎙️</div>
+                <div class="task-info">
+                    <h3>Product Reviews</h3>
+                    <div class="task-desc">Occasional product review videos for YouTube channel. Gear, plugins, sample libraries.</div>
+                    <div class="task-badges"><span class="badge badge-content">Content</span></div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <div class="task-icon" style="background:#0a2e1a;color:#34d399">📈</div>
+                <div class="task-info">
+                    <h3>Email List Growth Strategy</h3>
+                    <div class="task-desc">Review MailerLite metrics, test new subscriber acquisition channels beyond IG ads. Optimize lead magnets.</div>
+                    <div class="task-badges"><span class="badge badge-marketing">Marketing</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FUTURE / PIPELINE -->
+        <div class="freq-group">
+            <h2>Future Pipeline</h2>
+            <p class="freq-sub">Not active yet — planned for later phases</p>
+
+            <div class="task-card" style="border-left-color: #f472b6; opacity: 0.75;">
+                <div class="task-icon" style="background:#2e0a1a;color:#f472b6">🏢</div>
+                <div class="task-info">
+                    <h3>Corporate Work Pitching</h3>
+                    <div class="task-desc">Research and pitch corporate clients — tech companies, real estate, healthcare, SaaS. LinkedIn outreach to video producers and marketing directors.</div>
+                    <div class="task-badges"><span class="badge badge-future">Future</span></div>
+                </div>
+            </div>
+
+            <div class="task-card" style="border-left-color: #f472b6; opacity: 0.75;">
+                <div class="task-icon" style="background:#2e0a1a;color:#f472b6">🚀</div>
+                <div class="task-info">
+                    <h3>Score School Launch</h3>
+                    <div class="task-desc">Launch composing program for sale. Coaching sessions. Target: when email list hits 300–500 subscribers.</div>
+                    <div class="task-badges"><span class="badge badge-future">Future</span><span class="badge badge-scoreschool">Score School</span></div>
+                </div>
+            </div>
+
+            <div class="task-card" style="border-left-color: #f472b6; opacity: 0.75;">
+                <div class="task-icon" style="background:#2e0a1a;color:#f472b6">🤝</div>
+                <div class="task-info">
+                    <h3>Ad Agency Relationships</h3>
+                    <div class="task-desc">Build relationships with creative agencies. Requires commercial portfolio and warm intros. 6+ months out.</div>
+                    <div class="task-badges"><span class="badge badge-future">Future</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+// TAB SWITCHING
+// ═══════════════════════════════════════════
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+});
+
+// ═══════════════════════════════════════════
+// MIND MAP DATA
+// ═══════════════════════════════════════════
+const data = {
+    name: "TOMMY ARNOLD\nPRODUCTIONS",
+    children: [
+        {
+            name: "Composition",
+            color: "#a78bfa",
+            bg: "#1a0a2e",
+            children: [
+                { name: "Film Scoring", tip: "Custom scores for horror, suspense, thriller films", freq: "Per project" },
+                { name: "Production\nProjects", tip: "Commissioned production work", freq: "Per project" },
+                { name: "Music\nLibraries", tip: "~10 tracks/month across multiple library companies", freq: "~10 tracks/month" },
+            ]
+        },
+        {
+            name: "Content",
+            color: "#60a5fa",
+            bg: "#0a1e2e",
+            children: [
+                { name: "YouTube\nVideos", tip: "1 long-form video per week, composer education", freq: "Weekly" },
+                { name: "YouTube\nShorts", tip: "Cut from long-form via OpusClip", freq: "5x/week" },
+                { name: "YT Text\nPosts", tip: "Community posts — polls, tips, BTS", freq: "3x/week" },
+                { name: "Substack", tip: "Tutorials, composer life articles. ⚠ 10 subscribers — ROI under review", freq: "Bi-weekly", flag: true },
+                { name: "Product\nReviews", tip: "Gear, plugins, sample library reviews on YouTube", freq: "Occasional" },
+            ]
+        },
+        {
+            name: "Social\nMedia",
+            color: "#f59e0b",
+            bg: "#2e1a0a",
+            children: [
+                { name: "IG Reels", tip: "Showcase (wk 1–2) + educational (wk 3–4)", freq: "3–5x/week" },
+                { name: "IG Stories", tip: "Behind-the-scenes, polls, day-in-the-life", freq: "3–4x/week" },
+                { name: "TikTok", tip: "Repurposed shorts + native content", freq: "3–5x/week" },
+                { name: "Threads", tip: "Text posts — quick tips, takes, updates", freq: "Daily" },
+                { name: "Twitter", tip: "Text posts mirroring Threads content", freq: "Daily" },
+            ]
+        },
+        {
+            name: "Marketing\n& Growth",
+            color: "#34d399",
+            bg: "#0a2e1a",
+            children: [
+                { name: "Instagram\nAds", tip: "Paid campaigns for email subscriber growth", freq: "Ongoing" },
+                { name: "Email List\nGrowth", tip: "MailerLite subscribers via ads, lead magnets, organic", freq: "Ongoing" },
+                { name: "Organic\nEngagement", tip: "Commenting, replying, DMs on IG + TikTok", freq: "Daily" },
+                { name: "Filmmaker\nOutreach", tip: "10–15 personalized pitcher emails/week, 3-email sequence", freq: "Weekly" },
+            ]
+        },
+        {
+            name: "Score\nSchool",
+            color: "#d4a843",
+            bg: "#2e2a0a",
+            children: [
+                { name: "Composing\nProgram", tip: "Building curriculum to sell as a course", freq: "Weekly dev" },
+                { name: "Digital\nProducts", tip: "eBooks, templates on Payhip", freq: "Existing" },
+                { name: "Coaching\nLaunch", tip: "Target: email list 300–500 subs", freq: "Future", flag: true },
+            ]
+        },
+        {
+            name: "Admin &\nFinance",
+            color: "#9ca3af",
+            bg: "#1a1a1a",
+            children: [
+                { name: "Expenses\n& Taxes", tip: "QuickBooks audit, receipt categorization, tax prep", freq: "Bi-weekly" },
+                { name: "BMI\nRoyalties", tip: "Monitor cue sheets for library TV placements", freq: "Bi-weekly" },
+                { name: "Business\nJournal", tip: "Daily reflection in Notion — wins, blockers, ideas", freq: "Daily" },
+            ]
+        },
+        {
+            name: "Future\nPipeline",
+            color: "#f472b6",
+            bg: "#2e0a1a",
+            children: [
+                { name: "Corporate\nPitching", tip: "Tech, real estate, healthcare, SaaS — LinkedIn outreach", freq: "Planned" },
+                { name: "Ad Agency\nRelationships", tip: "Requires commercial portfolio + warm intros", freq: "6+ months out" },
+            ]
+        }
+    ]
+};
+
+// ═══════════════════════════════════════════
+// RENDER MIND MAP
+// ═══════════════════════════════════════════
+const svg = document.getElementById('mindmap-svg');
+const tooltip = document.getElementById('tooltip');
+const CX = 550, CY = 450;
+
+function createSVGEl(tag, attrs) {
+    const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+    return el;
+}
+
+function drawTextLines(parent, text, x, y, size, fill, weight, anchor) {
+    const lines = text.split('\n');
+    const lineH = size * 1.25;
+    const startY = y - ((lines.length - 1) * lineH) / 2;
+    lines.forEach((line, i) => {
+        const t = createSVGEl('text', {
+            x, y: startY + i * lineH,
+            'font-family': 'Montserrat, sans-serif',
+            'font-size': size,
+            'font-weight': weight,
+            fill,
+            'text-anchor': anchor || 'middle',
+            'dominant-baseline': 'central',
+            'pointer-events': 'none'
+        });
+        t.textContent = line;
+        parent.appendChild(t);
+    });
+}
+
+// Draw curved connection line
+function drawCurve(x1, y1, x2, y2, color, width) {
+    const mx = (x1 + x2) / 2;
+    const my = (y1 + y2) / 2;
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    // Control point offset perpendicular to midpoint for nice curves
+    const cx1 = x1 + dx * 0.4;
+    const cy1 = y1 + dy * 0.1;
+    const cx2 = x1 + dx * 0.6;
+    const cy2 = y2 - dy * 0.1;
+    const path = createSVGEl('path', {
+        d: `M ${x1} ${y1} C ${cx1} ${cy1}, ${cx2} ${cy2}, ${x2} ${y2}`,
+        stroke: color,
+        'stroke-width': width,
+        fill: 'none',
+        opacity: '0.35'
+    });
+    svg.appendChild(path);
+}
+
+// Center node
+const centerG = createSVGEl('g', {});
+const centerCircle = createSVGEl('circle', {
+    cx: CX, cy: CY, r: 65,
+    fill: '#111',
+    stroke: '#39ff14',
+    'stroke-width': 2.5
+});
+centerG.appendChild(centerCircle);
+drawTextLines(centerG, data.name, CX, CY, 10, '#39ff14', 700, 'middle');
+svg.appendChild(centerG);
+
+// Add a subtle glow to center
+const defs = createSVGEl('defs', {});
+const filter = createSVGEl('filter', { id: 'glow' });
+const blur = createSVGEl('feGaussianBlur', { stdDeviation: '3', result: 'coloredBlur' });
+const merge = createSVGEl('feMerge', {});
+const mergeNode1 = createSVGEl('feMergeNode', { in: 'coloredBlur' });
+const mergeNode2 = createSVGEl('feMergeNode', { in: 'SourceGraphic' });
+merge.appendChild(mergeNode1);
+merge.appendChild(mergeNode2);
+filter.appendChild(blur);
+filter.appendChild(merge);
+defs.appendChild(filter);
+svg.appendChild(defs);
+centerCircle.setAttribute('filter', 'url(#glow)');
+
+// Branch layout
+const branches = data.children;
+const branchCount = branches.length;
+const branchRadius = 210;
+const leafRadius = 155;
+
+branches.forEach((branch, bi) => {
+    const angle = (bi / branchCount) * Math.PI * 2 - Math.PI / 2;
+    const bx = CX + Math.cos(angle) * branchRadius;
+    const by = CY + Math.sin(angle) * branchRadius;
+
+    // Line from center to branch
+    drawCurve(CX, CY, bx, by, branch.color, 2.5);
+
+    // Branch node
+    const bG = createSVGEl('g', { style: 'cursor:pointer' });
+    const bRect = createSVGEl('rect', {
+        x: bx - 52, y: by - 22,
+        width: 104, height: 44,
+        rx: 10,
+        fill: branch.bg,
+        stroke: branch.color,
+        'stroke-width': 1.5,
+    });
+    bG.appendChild(bRect);
+    drawTextLines(bG, branch.name, bx, by, 9.5, branch.color, 700, 'middle');
+    svg.appendChild(bG);
+
+    // Leaves
+    const leaves = branch.children;
+    const leafCount = leaves.length;
+    const spreadAngle = Math.min(Math.PI * 0.45, leafCount * 0.28);
+    const startAngle = angle - spreadAngle / 2;
+    const angleStep = leafCount > 1 ? spreadAngle / (leafCount - 1) : 0;
+
+    leaves.forEach((leaf, li) => {
+        const la = leafCount === 1 ? angle : startAngle + li * angleStep;
+        const lx = bx + Math.cos(la) * leafRadius;
+        const ly = by + Math.sin(la) * leafRadius;
+
+        // Line from branch to leaf
+        drawCurve(bx, by, lx, ly, branch.color, 1.2);
+
+        // Leaf node
+        const lG = createSVGEl('g', { style: 'cursor:pointer' });
+        const lBg = createSVGEl('rect', {
+            x: lx - 42, y: ly - 18,
+            width: 84, height: 36,
+            rx: 8,
+            fill: '#111',
+            stroke: branch.color,
+            'stroke-width': leaf.flag ? 1.5 : 0.8,
+            'stroke-dasharray': leaf.flag ? '4,3' : 'none',
+            opacity: leaf.flag ? 0.7 : 1
+        });
+        lG.appendChild(lBg);
+        drawTextLines(lG, leaf.name, lx, ly, 8, '#ccc', 600, 'middle');
+
+        // Tooltip interaction
+        lG.addEventListener('mouseenter', (e) => {
+            lBg.setAttribute('stroke-width', '2');
+            lBg.setAttribute('fill', branch.bg);
+            let html = leaf.tip;
+            if (leaf.flag) html += '<br><span class="flag">⚠ Under review / Future</span>';
+            html += `<span class="freq">${leaf.freq}</span>`;
+            tooltip.innerHTML = html;
+            tooltip.classList.add('visible');
+        });
+        lG.addEventListener('mousemove', (e) => {
+            const tx = Math.min(e.clientX + 14, window.innerWidth - 280);
+            const ty = e.clientY - 10;
+            tooltip.style.left = tx + 'px';
+            tooltip.style.top = ty + 'px';
+        });
+        lG.addEventListener('mouseleave', () => {
+            lBg.setAttribute('stroke-width', leaf.flag ? '1.5' : '0.8');
+            lBg.setAttribute('fill', '#111');
+            tooltip.classList.remove('visible');
+        });
+
+        // Touch support
+        lG.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            lBg.setAttribute('fill', branch.bg);
+            let html = leaf.tip;
+            if (leaf.flag) html += '<br><span class="flag">⚠ Under review / Future</span>';
+            html += `<span class="freq">${leaf.freq}</span>`;
+            tooltip.innerHTML = html;
+            tooltip.classList.add('visible');
+            const touch = e.touches[0];
+            tooltip.style.left = Math.min(touch.clientX + 14, window.innerWidth - 280) + 'px';
+            tooltip.style.top = (touch.clientY - 60) + 'px';
+            setTimeout(() => {
+                tooltip.classList.remove('visible');
+                lBg.setAttribute('fill', '#111');
+            }, 2500);
+        });
+
+        svg.appendChild(lG);
+    });
+});
+</script>
+
+</body>
+</html>
